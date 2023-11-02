@@ -553,10 +553,6 @@ a:hover{
   max-width: 1100px;
 }
 
-.fixed{
-  position: fixed;
-}
-
 .sticky{
   position: sticky;
 }
@@ -578,18 +574,6 @@ a:hover{
   display: flex;
 }
 
-.h-10{
-  height: 2.5rem;
-}
-
-.h-\[200vh\]{
-  height: 200vh;
-}
-
-.w-10{
-  width: 2.5rem;
-}
-
 .items-center{
   align-items: center;
 }
@@ -602,9 +586,13 @@ a:hover{
   gap: 3rem;
 }
 
-.bg-primary{
-  --tw-bg-opacity: 1;
-  background-color: rgb(48 30 95 / var(--tw-bg-opacity));
+.border-b-\[40px\]{
+  border-bottom-width: 40px;
+}
+
+.border-black{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .py-9{
