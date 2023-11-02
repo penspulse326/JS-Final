@@ -8,6 +8,9 @@ module.exports = {
         secondary: "#6A33FF",
       },
     },
+    fontFamily: {
+      sans: ["Noto Sans TC", "sans-serif"],
+    },
   },
   plugins: [],
 };
