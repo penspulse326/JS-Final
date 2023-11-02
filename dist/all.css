@@ -565,10 +565,6 @@ a:hover{
   position: sticky;
 }
 
-.top-0{
-  top: 0px;
-}
-
 .bottom-12{
   bottom: 3rem;
 }
@@ -577,16 +573,20 @@ a:hover{
   left: 52px;
 }
 
+.top-0{
+  top: 0px;
+}
+
 .z-50{
   z-index: 50;
 }
 
-.col-span-2{
-  grid-column: span 2 / span 2;
-}
-
 .col-span-12{
   grid-column: span 12 / span 12;
+}
+
+.col-span-2{
+  grid-column: span 2 / span 2;
 }
 
 .col-start-6{
@@ -644,6 +644,11 @@ a:hover{
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .py-9{
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
@@ -651,10 +656,6 @@ a:hover{
 
 .text-center{
   text-align: center;
-}
-
-.text-\[28px\]{
-  font-size: 28px;
 }
 
 .text-xl{
@@ -675,11 +676,6 @@ a:hover{
   transition-duration: 300ms;
 }
 
-.hover\:sepia-0:hover{
-  --tw-sepia: sepia(0);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .hover\:sepia:hover{
   --tw-sepia: sepia(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -688,10 +684,6 @@ a:hover{
 @media (min-width: 1280px){
   .xl\:col-span-12{
     grid-column: span 12 / span 12;
-  }
-
-  .xl\:mt-8{
-    margin-top: 2rem;
   }
 
   .xl\:mt-\[60px\]{
