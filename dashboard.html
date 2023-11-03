@@ -8,5 +8,89 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="./src/scripts/main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <nav class="sticky top-0 z-50 border-b-[40px] border-black bg-white">
+      <div class="box mx-auto">
+        <div class="flex justify-between items-center py-9">
+          <a href="#"><h1 class="xl:text-2xl font-bold">WOWOROOM</h1></a>
+          <ul class="flex gap-12">
+            <li><a href="#">後台管理</a></li>
+            <li><a href="#">管理員登入</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="pt-[60px] pb-[108px]">
+        <div class="box mx-auto">
+          <h2 class="text-[28px] text-center">全產品類別營收比重</h2>
+          <div class="grid xl:grid-cols-12 gap-x-[30px]">
+            <div class="col-span-4 col-start-5" id="chart"></div>
+            <button
+              class="btn-cleanOrder col-span-2 col-start-11 px-5 py-[10px] border border-black rounded-[4px] text-xl whitespace-nowrap hover:text-white hover:bg-black duration-300"
+            >
+              清除全部訂單
+            </button>
+            <table
+              class="table-order col-span-12 mt-3 border border-black border-collapse text-left"
+            >
+              <tr>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  訂單編號
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  聯絡人
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  聯絡地址
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  電子郵件
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  訂單品項
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  訂單日期
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  訂單狀態
+                </th>
+                <th class="px-4 py-3 border border-black whitespace-nowrap">
+                  操作
+                </th>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 border border-black">10088377474</td>
+                <td class="px-4 py-3 border border-black">
+                  小杰<br />0912345678
+                </td>
+                <td class="px-4 py-3 border border-black">
+                  高雄市前鎮區六合路183巷66號
+                </td>
+                <td class="px-4 py-3 border border-black">
+                  cccexample@gmail.com
+                </td>
+                <td class="px-4 py-3 border border-black">Louvre 雙人床架</td>
+                <td class="px-4 py-3 border border-black">2021/03/08</td>
+                <td class="px-4 py-3 border border-black">
+                  <button class="text-[#0067CE] underline" type="button">
+                    未處理
+                  </button>
+                </td>
+                <td class="px-1 py-2 border border-black">
+                  <button
+                    class="px-[10px] py-1 bg-[#C44021] text-white hover:bg-[#9D3F28] duration-300"
+                    type="button"
+                  >
+                    操作
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

@@ -12,6 +12,10 @@
   a {
     @apply duration-300 hover:text-secondary;
   }
+
+  th {
+    font-weight: 400;
+  }
 }
 
 @layer components {
