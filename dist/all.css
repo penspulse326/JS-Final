@@ -573,6 +573,10 @@ th {
   position: sticky;
 }
 
+.-right-1{
+  right: -0.25rem;
+}
+
 .bottom-12{
   bottom: 3rem;
 }
@@ -585,6 +589,10 @@ th {
   top: 0px;
 }
 
+.top-3{
+  top: 0.75rem;
+}
+
 .z-50{
   z-index: 50;
 }
@@ -595,6 +603,10 @@ th {
 
 .col-span-2{
   grid-column: span 2 / span 2;
+}
+
+.col-span-3{
+  grid-column: span 3 / span 3;
 }
 
 .col-span-4{
@@ -690,12 +702,24 @@ th {
   height: 115px;
 }
 
+.h-\[302px\]{
+  height: 302px;
+}
+
+.h-\[38px\]{
+  height: 38px;
+}
+
 .h-\[40px\]{
   height: 40px;
 }
 
 .w-\[115px\]{
   width: 115px;
+}
+
+.w-\[88px\]{
+  width: 88px;
 }
 
 .w-full{
@@ -716,6 +740,10 @@ th {
 
 .cursor-grab{
   cursor: grab;
+}
+
+.grid-cols-12{
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -751,6 +779,10 @@ th {
        column-gap: 30px;
 }
 
+.gap-y-7{
+  row-gap: 1.75rem;
+}
+
 .whitespace-nowrap{
   white-space: nowrap;
 }
@@ -784,6 +816,11 @@ th {
   border-color: rgb(185 185 185 / var(--tw-border-opacity));
 }
 
+.border-\[\#CED4DA\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(206 212 218 / var(--tw-border-opacity));
+}
+
 .border-black{
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -804,6 +841,11 @@ th {
   background-color: rgb(248 248 248 / var(--tw-bg-opacity));
 }
 
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -822,11 +864,6 @@ th {
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-}
-
-.px-\[10px\]{
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .py-1{
@@ -862,8 +899,16 @@ th {
   padding-bottom: 108px;
 }
 
+.pb-\[60px\]{
+  padding-bottom: 60px;
+}
+
 .pb-\[72px\]{
   padding-bottom: 72px;
+}
+
+.pl-3{
+  padding-left: 0.75rem;
 }
 
 .pt-8{
@@ -932,6 +977,11 @@ th {
   color: rgb(121 121 121 / var(--tw-text-opacity));
 }
 
+.text-\[\#818A91\]{
+  --tw-text-opacity: 1;
+  color: rgb(129 138 145 / var(--tw-text-opacity));
+}
+
 .text-secondary{
   --tw-text-opacity: 1;
   color: rgb(106 51 255 / var(--tw-text-opacity));
@@ -944,6 +994,10 @@ th {
 
 .underline{
   text-decoration-line: underline;
+}
+
+.line-through{
+  text-decoration-line: line-through;
 }
 
 .duration-300{
