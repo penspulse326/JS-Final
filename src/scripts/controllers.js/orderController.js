@@ -6,12 +6,14 @@ class orderController {
   constructor() {
     this.btnLogin = document.querySelector(".btn-login");
     this.tableElement = document.querySelector(".table-order");
+    this.btnClear = document.querySelector(".btn-clearOrder");
     this.orderData = [];
 
     this.btnLogin?.addEventListener("click", () => this.orderInit());
     this.tableElement?.addEventListener("click", (e) =>
       this.checkTableClick(e)
     );
+    this.btnClear?.addEventListener("click", () => this.checkClearBtn());
   }
   // 渲染表格
   renderTable() {
@@ -71,6 +73,21 @@ class orderController {
       })
       .catch(() =>
         Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error")
+      );
+  }
+  // 請求清除全部訂單
+  clearOrder() {
+    axios
+      .delete(`/admin/${apiPath}/orders`)
+      .then((res) => {
+        if (res.data.status) {
+          Swal.fire("刪除成功!", res.data.message, "success");
+          this.orderData = res.data.orders;
+          this.renderTable();
+        }
+      })
+      .catch(() =>
+        Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error")
       );
   }
   // 監聽 table 點擊
