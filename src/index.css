@@ -38,3 +38,14 @@
   cursor: grabbing;
   cursor: -webkit-grabbing;
 }
+
+.transport-card::after {
+  position: absolute;
+  content: "";
+  top: 49px;
+  right: -60px;
+  border: 10px solid #000000;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
