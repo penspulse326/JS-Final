@@ -686,8 +686,16 @@ th {
   display: grid;
 }
 
+.h-\[115px\]{
+  height: 115px;
+}
+
 .h-\[40px\]{
   height: 40px;
+}
+
+.w-\[115px\]{
+  width: 115px;
 }
 
 .w-full{
@@ -734,6 +742,10 @@ th {
   gap: 30px;
 }
 
+.gap-\[90px\]{
+  gap: 90px;
+}
+
 .gap-x-\[30px\]{
   -moz-column-gap: 30px;
        column-gap: 30px;
@@ -747,8 +759,16 @@ th {
   border-radius: 4px;
 }
 
+.rounded-\[50\%\]{
+  border-radius: 50%;
+}
+
 .border{
   border-width: 1px;
+}
+
+.border-\[3px\]{
+  border-width: 3px;
 }
 
 .border-b{
@@ -804,6 +824,11 @@ th {
   padding-right: 1.25rem;
 }
 
+.px-\[10px\]{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -837,6 +862,14 @@ th {
   padding-bottom: 108px;
 }
 
+.pb-\[72px\]{
+  padding-bottom: 72px;
+}
+
+.pt-8{
+  padding-top: 2rem;
+}
+
 .pt-\[60px\]{
   padding-top: 60px;
 }
@@ -856,6 +889,10 @@ th {
 
 .text-\[28px\]{
   font-size: 28px;
+}
+
+.text-\[50px\]{
+  font-size: 50px;
 }
 
 .text-sm{
@@ -928,6 +965,17 @@ th {
 .recommendation_wall .active {
   cursor: grabbing;
   cursor: -webkit-grabbing;
+}
+
+.transport-card::after {
+  position: absolute;
+  content: "";
+  top: 49px;
+  right: -60px;
+  border: 10px solid #000000;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 
 .hover\:bg-\[\#9D3F28\]:hover{
