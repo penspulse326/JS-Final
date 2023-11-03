@@ -19,3 +19,18 @@
     @apply max-w-[1100px];
   }
 }
+.recommendation_wall::-webkit-scrollbar {
+  display: none;
+}
+.recommendation_wall {
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.recommendation_wall .active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}

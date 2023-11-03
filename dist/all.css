@@ -598,6 +598,30 @@ a:hover{
   margin-right: auto;
 }
 
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+
+.mb-5{
+  margin-bottom: 1.25rem;
+}
+
+.mb-8{
+  margin-bottom: 2rem;
+}
+
+.ml-\[95px\]{
+  margin-left: 95px;
+}
+
+.mr-2{
+  margin-right: 0.5rem;
+}
+
+.mr-4{
+  margin-right: 1rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -614,8 +638,36 @@ a:hover{
   display: grid;
 }
 
+.h-\[40px\]{
+  height: 40px;
+}
+
+.w-full{
+  width: 100%;
+}
+
+.min-w-\[350px\]{
+  min-width: 350px;
+}
+
+.max-w-\[1110px\]{
+  max-width: 1110px;
+}
+
+.cursor-grab{
+  cursor: grab;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
 .items-center{
   align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
 }
 
 .justify-between{
@@ -644,6 +696,16 @@ a:hover{
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.bg-\[\#301E5F\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 30 95 / var(--tw-bg-opacity));
+}
+
+.bg-primary{
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 30 95 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -654,8 +716,25 @@ a:hover{
   padding-bottom: 2.25rem;
 }
 
+.pb-20{
+  padding-bottom: 5rem;
+}
+
+.pt-\[60px\]{
+  padding-top: 60px;
+}
+
 .text-center{
   text-align: center;
+}
+
+.text-\[28px\]{
+  font-size: 28px;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-xl{
@@ -667,6 +746,15 @@ a:hover{
   font-weight: 700;
 }
 
+.leading-\[38px\]{
+  line-height: 38px;
+}
+
+.text-\[\#6A33F8\]{
+  --tw-text-opacity: 1;
+  color: rgb(106 51 248 / var(--tw-text-opacity));
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -674,6 +762,23 @@ a:hover{
 
 .duration-300{
   transition-duration: 300ms;
+}
+
+.recommendation_wall::-webkit-scrollbar {
+  display: none;
+}
+
+.recommendation_wall {
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.recommendation_wall .active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
 }
 
 .hover\:sepia:hover{
@@ -720,4 +825,9 @@ a:hover{
   .\32xl\:text-\[32px\]{
     font-size: 32px;
   }
+}
+
+.\[\&\>li\]\:bg-white>li{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
