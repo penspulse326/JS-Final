@@ -449,6 +449,10 @@ a:hover{
   color: rgb(106 51 255 / var(--tw-text-opacity));
 }
 
+table *{
+  vertical-align: top;
+}
+
 th {
   font-weight: 400;
 }
@@ -798,11 +802,6 @@ th {
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-}
-
-.px-\[10px\]{
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .py-1{
