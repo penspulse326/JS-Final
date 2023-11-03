@@ -13,6 +13,10 @@
     @apply duration-300 hover:text-secondary;
   }
 
+  table *{
+    vertical-align: top;
+  }
+
   th {
     font-weight: 400;
   }
