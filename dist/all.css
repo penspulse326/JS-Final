@@ -449,6 +449,10 @@ a:hover{
   color: rgb(106 51 255 / var(--tw-text-opacity));
 }
 
+th {
+  font-weight: 400;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -550,7 +554,7 @@ a:hover{
 }
 
 .box{
-  max-width: 1100px;
+  max-width: 1110px;
 }
 
 .absolute{
@@ -589,8 +593,36 @@ a:hover{
   grid-column: span 2 / span 2;
 }
 
+.col-span-4{
+  grid-column: span 4 / span 4;
+}
+
+.col-span-8{
+  grid-column: span 8 / span 8;
+}
+
+.col-start-1{
+  grid-column-start: 1;
+}
+
+.col-start-11{
+  grid-column-start: 11;
+}
+
+.col-start-3{
+  grid-column-start: 3;
+}
+
+.col-start-5{
+  grid-column-start: 5;
+}
+
 .col-start-6{
   grid-column-start: 6;
+}
+
+.col-start-7{
+  grid-column-start: 7;
 }
 
 .mx-auto{
@@ -626,40 +658,28 @@ a:hover{
   margin-top: 0.5rem;
 }
 
+.mt-5{
+  margin-top: 1.25rem;
+}
+
 .mt-7{
   margin-top: 1.75rem;
+}
+
+.mt-3{
+  margin-top: 0.75rem;
 }
 
 .flex{
   display: flex;
 }
 
+.table{
+  display: table;
+}
+
 .grid{
   display: grid;
-}
-
-.h-\[40px\]{
-  height: 40px;
-}
-
-.w-full{
-  width: 100%;
-}
-
-.min-w-\[350px\]{
-  min-width: 350px;
-}
-
-.max-w-\[1110px\]{
-  max-width: 1110px;
-}
-
-.cursor-grab{
-  cursor: grab;
-}
-
-.flex-col{
-  flex-direction: column;
 }
 
 .items-center{
@@ -687,8 +707,37 @@ a:hover{
        column-gap: 30px;
 }
 
+.whitespace-nowrap{
+  white-space: nowrap;
+}
+
+.rounded-\[4px\]{
+  border-radius: 4px;
+}
+
+.border-\[1px\]{
+  border-width: 1px;
+}
+
+.border{
+  border-width: 1px;
+}
+
+.border-b-\[1px\]{
+  border-bottom-width: 1px;
+}
+
 .border-b-\[40px\]{
   border-bottom-width: 40px;
+}
+
+.border-b{
+  border-bottom-width: 1px;
+}
+
+.border-\[\#B9B9B9\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(185 185 185 / var(--tw-border-opacity));
 }
 
 .border-black{
@@ -696,19 +745,33 @@ a:hover{
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.bg-\[\#301E5F\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(48 30 95 / var(--tw-bg-opacity));
-}
-
-.bg-primary{
-  --tw-bg-opacity: 1;
-  background-color: rgb(48 30 95 / var(--tw-bg-opacity));
-}
-
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#C44021\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 64 33 / var(--tw-bg-opacity));
+}
+
+.p-2{
+  padding: 0.5rem;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-9{
@@ -716,25 +779,8 @@ a:hover{
   padding-bottom: 2.25rem;
 }
 
-.pb-20{
-  padding-bottom: 5rem;
-}
-
-.pt-\[60px\]{
-  padding-top: 60px;
-}
-
 .text-center{
   text-align: center;
-}
-
-.text-\[28px\]{
-  font-size: 28px;
-}
-
-.text-sm{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .text-xl{
@@ -746,39 +792,30 @@ a:hover{
   font-weight: 700;
 }
 
-.leading-\[38px\]{
-  line-height: 38px;
-}
-
-.text-\[\#6A33F8\]{
-  --tw-text-opacity: 1;
-  color: rgb(106 51 248 / var(--tw-text-opacity));
-}
-
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-\[\#0067CE\]{
+  --tw-text-opacity: 1;
+  color: rgb(0 103 206 / var(--tw-text-opacity));
+}
+
+.underline{
+  text-decoration-line: underline;
+}
+
+.decoration-solid{
+  text-decoration-style: solid;
+}
+
+.decoration-double{
+  text-decoration-style: double;
+}
+
 .duration-300{
   transition-duration: 300ms;
-}
-
-.recommendation_wall::-webkit-scrollbar {
-  display: none;
-}
-
-.recommendation_wall {
-  overflow-x: scroll;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.recommendation_wall .active {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
 }
 
 .hover\:sepia:hover{
@@ -803,8 +840,20 @@ a:hover{
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
+  .xl\:grid-cols-8{
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .xl\:pb-16{
+    padding-bottom: 4rem;
+  }
+
   .xl\:pb-\[60px\]{
     padding-bottom: 60px;
+  }
+
+  .xl\:pt-12{
+    padding-top: 3rem;
   }
 
   .xl\:pt-8{
