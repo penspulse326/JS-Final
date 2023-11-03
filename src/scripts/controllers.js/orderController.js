@@ -6,18 +6,19 @@ class orderController {
   constructor() {
     this.btnLogin = document.querySelector(".btn-login");
     this.tableElement = document.querySelector(".table-order");
+    this.btnClear = document.querySelector(".btn-clearOrders");
     this.orderData = [];
 
     this.btnLogin?.addEventListener("click", () => this.orderInit());
     this.tableElement?.addEventListener("click", (e) =>
       this.checkTableClick(e)
     );
+    this.btnClear?.addEventListener("click", () => this.checkClearBtn());
   }
   // 渲染表格
   renderTable() {
     this.orderData.sort((a, b) => a.createdAt - b.createdAt);
 
-    if (!this.orderData.length) return;
     this.tableElement.innerHTML =
       tableTitleHTML + this.orderData.map((item) => TableItem(item)).join("");
   }
@@ -36,6 +37,21 @@ class orderController {
       .catch(() =>
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error")
       );
+  }
+  // 初始化
+  orderInit() {
+    const uid = prompt("請輸入 UID", "97NYtTEy4GNDBv5W3taaYDYt2ff1");
+    axios.defaults.headers.common["Authorization"] = uid;
+    this.getOrder();
+  }
+  // 監聽 table 點擊
+  checkTableClick(e) {
+    const isBtnToggle = e.target.classList.contains("btn-order-toggle");
+    const isBtnDelete = e.target.classList.contains("btn-order-delete");
+    const id = e.target.closest("tr").getAttribute("data-id");
+
+    if (isBtnToggle) this.putOrderPaidStatus(id, e.target.textContent);
+    if (isBtnDelete) this.deleteOrder(id);
   }
   // 請求更改付款狀態
   putOrderPaidStatus(id, statusText) {
@@ -73,20 +89,38 @@ class orderController {
         Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error")
       );
   }
-  // 監聽 table 點擊
-  checkTableClick(e) {
-    const isBtnToggle = e.target.classList.contains("btn-order-toggle");
-    const isBtnDelete = e.target.classList.contains("btn-order-delete");
-    const id = e.target.closest("tr").getAttribute("data-id");
-
-    if (isBtnToggle) this.putOrderPaidStatus(id, e.target.textContent);
-    if (isBtnDelete) this.deleteOrder(id);
+  // 監聽清除按鈕
+  checkClearBtn() {
+    if (!this.orderData.length) {
+      Swal.fire("錯誤操作", "目前沒有任何訂單 =O=", "question");
+      return;
+    }
+    Swal.fire({
+      title: "注意",
+      text: "確定要刪除所有訂單嗎 OAO？",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonText: "取消",
+      confirmButtonText: "確定刪除",
+    }).then((result) => {
+      if (result.isConfirmed) this.clearOrder();
+    });
   }
-  // 初始化
-  orderInit() {
-    const uid = prompt("請輸入 UID", "97NYtTEy4GNDBv5W3taaYDYt2ff1");
-    axios.defaults.headers.common["Authorization"] = uid;
-    this.getOrder();
+  // 請求清除全部訂單
+  clearOrder() {
+    axios
+      .delete(`/admin/${apiPath}/orders`)
+      .then((res) => {
+        if (res.data.status) {
+          Swal.fire("刪除成功!", res.data.message, "success");
+          this.orderData = res.data.orders;
+          this.renderTable();
+        }
+      })
+      .catch(() =>
+        Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error")
+      );
   }
 }
 
