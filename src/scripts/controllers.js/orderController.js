@@ -9,6 +9,9 @@ class orderController {
     this.orderData = [];
 
     this.btnLogin?.addEventListener("click", () => this.orderInit());
+    this.tableElement?.addEventListener("click", (e) =>
+      this.checkTableClick(e)
+    );
   }
   // 渲染表格
   renderTable() {
@@ -26,13 +29,43 @@ class orderController {
         if (res.data.status) {
           this.orderData = res.data.orders;
           this.renderTable();
+          return;
         }
+        Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
       })
       .catch(() =>
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error")
       );
   }
+  // 請求更改付款狀態
+  putOrderPaidStatus(id, statusText) {
+    const text = statusText.trim();
+    let status = false;
 
+    if (text === "已處理") status = true;
+    if (text === "未處理") status = false;
+
+    const reqData = { data: { id, paid: !status } };
+
+    axios
+      .put(`/admin/${apiPath}/orders`, reqData)
+      .then((res) => {
+        if (res.status === 200) {
+          this.orderData = res.data.orders;
+          this.renderTable();
+        }
+      })
+      .catch(() =>
+        Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error")
+      );
+  }
+  // 監聽 table 點擊
+  checkTableClick(e) {
+    const isBtnToggle = e.target.classList.contains("btn-order-toggle");
+    const id = e.target.closest("tr").getAttribute("data-id");
+
+    if (isBtnToggle) this.putOrderPaidStatus(id, e.target.textContent);
+  }
   // 初始化
   orderInit() {
     const uid = prompt("請輸入 UID", "97NYtTEy4GNDBv5W3taaYDYt2ff1");
