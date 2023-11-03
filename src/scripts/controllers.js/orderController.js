@@ -59,12 +59,28 @@ class orderController {
         Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error")
       );
   }
+  // 請求刪除單個訂單
+  deleteOrder(id) {
+    axios
+      .delete(`/admin/${apiPath}/orders/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          this.orderData = res.data.orders;
+          this.renderTable();
+        }
+      })
+      .catch(() =>
+        Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error")
+      );
+  }
   // 監聽 table 點擊
   checkTableClick(e) {
     const isBtnToggle = e.target.classList.contains("btn-order-toggle");
+    const isBtnDelete = e.target.classList.contains("btn-order-delete");
     const id = e.target.closest("tr").getAttribute("data-id");
 
     if (isBtnToggle) this.putOrderPaidStatus(id, e.target.textContent);
+    if (isBtnDelete) this.deleteOrder(id);
   }
   // 初始化
   orderInit() {
