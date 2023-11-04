@@ -7,6 +7,10 @@ class orderController {
     this.btnLogin = document.querySelector(".btn-login");
     this.tableElement = document.querySelector(".table-order");
     this.btnClear = document.querySelector(".btn-clearOrders");
+    this.hintNotLogin = document.querySelector(".section-not-login");
+    this.order = document.querySelector(".section-order");
+    this.orderList = document.querySelector(".order-list");
+    this.orderEmpty = document.querySelector(".order-empty");
     this.orderData = [];
 
     this.btnLogin?.addEventListener("click", () => this.orderInit());
@@ -17,16 +21,45 @@ class orderController {
   }
   // 渲染表格
   renderTable() {
+    if (!this.orderData.length) {
+      this.orderEmpty.classList.remove("hidden");
+      this.orderList.classList.add("hidden");
+      return;
+    }
+
+    this.orderEmpty.classList.add("hidden");
+    this.orderList.classList.remove("hidden");
+
     this.orderData.sort((a, b) => a.createdAt - b.createdAt);
 
     this.tableElement.innerHTML =
       tableTitleHTML + this.orderData.map((item) => TableItem(item)).join("");
+
+    const chart = c3.generate({
+      data: {
+        columns: [
+          ["data1", 30],
+          ["data2", 120],
+        ],
+        type: "pie",
+        onclick: function (d, i) {
+          console.log("onclick", d, i);
+        },
+        onmouseover: function (d, i) {
+          console.log("onmouseover", d, i);
+        },
+        onmouseout: function (d, i) {
+          console.log("onmouseout", d, i);
+        },
+      },
+    });
   }
   // 請求訂單列表
   getOrder() {
     axios
       .get(`/admin/${apiPath}/orders`)
       .then((res) => {
+        console.log(res);
         if (res.data.status) {
           this.orderData = res.data.orders;
           this.renderTable();
@@ -34,15 +67,20 @@ class orderController {
         }
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
       })
-      .catch(() =>
-        Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error")
-      );
+      .catch(() => {
+        Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
+      });
   }
   // 初始化
   orderInit() {
     const uid = prompt("請輸入 UID", "97NYtTEy4GNDBv5W3taaYDYt2ff1");
+    if (!uid) return;
+
     axios.defaults.headers.common["Authorization"] = uid;
     this.getOrder();
+
+    this.hintNotLogin.classList.add("hidden");
+    this.order.classList.remove("hidden");
   }
   // 監聽 table 點擊
   checkTableClick(e) {
@@ -152,4 +190,4 @@ const tableTitleHTML = `
     </th>
   </tr>`;
 
-export default new orderController();
+export default orderController;
