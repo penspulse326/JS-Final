@@ -1,0 +1,73 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<link rel="stylesheet" href="../../dist/all.css" />
+
+<section class="bg-[#F8F8F8]">
+  <!-- container -->
+  <div
+    class="max-w-[1110px] mx-auto grid grid-cols-4 md:grid-cols-8 xl:grid-cols-12 gap-x-[15px] xl:gap-x-[30px] pt-12 pb-[70px] px-3 md:px-8 xl:px-0"
+  >
+    <h2 class="col-span-full text-[28px] mb-8 text-center">我的購物車</h2>
+    <!-- cart container -->
+    <ul
+      class="col-span-full gap-x-[15px] md:gap-x-[30px] xl:col-span-10 xl:col-start-2 text-[20px]"
+    >
+      <!-- table title -->
+      <li
+        class="hidden md:grid grid-cols-4 md:grid-cols-8 gap-x-[15px] xl:grid-cols-10 xl:gap-x-[30px] mb-5"
+      >
+        <p class="md:col-span-3 xl:col-span-3">品項</p>
+        <p class="md:col-span-2">單價</p>
+        <p class="xl:col-span-2">數量</p>
+        <p class="md:col-span-2 xl:col-span-3">金額</p>
+      </li>
+      <!-- cart item -->
+      <!-- <ol
+        class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center pb-5 mb-5 border-b border-gray-400 gap-y-3"
+      >
+        <li
+          class="col-span-full md:col-span-3 flex items-center gap-x-[15px] xl:gap-x-[30px]"
+        >
+          <img src="/src/images/cart-item-1.png" class="w-20 h-20" alt="" />
+          <p>Antony 雙人床架／雙人加大</p>
+        </li>
+        <li class="col-span-2">
+          <span class="mr-2 md:hidden">單價</span>NT$12,000
+        </li>
+        <li class="xl:col-span-2 text-right md:text-left">
+          <span class="mr-2 md:hidden">數量</span>1
+        </li>
+        <li class="hidden md:block xl:col-span-2">
+          <span class="md:hidden">金額 </span>NT$12,000
+        </li>
+        <li>
+          <span
+            class="material-symbols-outlined flex items-center justify-end xl:justify-start"
+            >close</span
+          >
+        </li>
+      </ol> -->
+      <!-- delete button & total amount -->
+      <ol
+        class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
+      >
+        <li class="col-span-full md:col-span-2">
+          <button
+            type="button"
+            class="border border-black w-full h-12 rounded-[4px] hover:bg-black hover:text-white"
+          >
+            刪除所有品項
+          </button>
+        </li>
+        <li class="md:col-start-6 xl:col-start-8 xl:text-left">總金額</li>
+        <li
+          class="col-span-3 md:col-span-2 xl:col-start-9 text-[28px] text-right md:text-left xl:text-right"
+        >
+          <!-- NT$13,980 -->
+        </li>
+      </ol>
+    </ul>
+  </div>
+</section>
