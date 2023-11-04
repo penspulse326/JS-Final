@@ -32,7 +32,7 @@ module.exports = {
         ".container": {
           maxWidth: "100%",
           "@screen md": {
-            maxWidth: "768px",
+            maxWidth: "100%",
           },
           "@screen lg": {
             maxWidth: "1110px",
