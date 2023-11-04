@@ -24,7 +24,7 @@ const apideleteAllCart = () => cartBase.delete(`api/livejs/v1/customer/${api_pat
 const apieditCartNum = (data) => cartBase.patch(`api/livejs/v1/customer/${api_path}/carts`,data);
 
 const productList=document.querySelector(".productList");
-
+const productSelect=document.querySelector(".productSelect")
 let product = []; //存放商品內容
 
 //錯誤彈跳
@@ -62,4 +62,18 @@ function renderProductData(data){
       <p class="text-[28px]">NT$${item.price}</p>
     </li>
   `).join("")
+}
+
+//productSelect 產品篩選
+export function productSelectHandler(){
+  productSelect.addEventListener("change",(e)=>{
+  renderProductData(product.filter((item) => {
+    if (e.target.value === item.category) {
+      return item;
+    }
+    if (e.target.value === "全部") {
+      return item;
+    }
+  }))
+})
 }
