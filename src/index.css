@@ -13,7 +13,7 @@
     @apply duration-300 hover:text-secondary;
   }
 
-  table *{
+  table * {
     vertical-align: top;
   }
 
@@ -45,3 +45,4 @@
   cursor: grabbing;
   cursor: -webkit-grabbing;
 }
+
