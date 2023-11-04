@@ -53,7 +53,7 @@ const getProductList=()=>{
 // 取得產品列表
 function renderProductData(data){
   productList.innerHTML=data.map((item)=>`
-    <li class="col-span-3 relative">
+    <li class="col-span-12 md:col-span-6 lg:col-span-3 relative">
       <div class="bg-black text-white text-xl w-[88px] py-2 text-center absolute top-3 -right-1">新品</div>
       <img src="${item.images}" alt="${item.title}" class="w-full h-[302px]">
       <button type="button" class="addbtn bg-black text-white w-full text-center hover:bg-primary py-2 mb-2" data-id="${item.id}">加入購物車</button>
