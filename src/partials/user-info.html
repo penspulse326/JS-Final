@@ -11,22 +11,19 @@
     <input
       type="text"
       name=""
-      id=""
+      id="customerName"
       placeholder="請輸入姓名"
       class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
     />
     <!-- required field hint -->
-    <!-- <span class="text-[#C72424] flex items-center ml-2 xl:ml-[-22px]"
-          >必填！</span
-        > -->
-    <label
-      class="xl:col-span-4 col-start-2 xl:col-start-5 text-base mt-5 mb-1.5"
-      >電話</label
-    >
+    <!-- <label
+    class="xl:col-span-4 col-start-2 xl:col-start-5 text-base mt-5 mb-1.5"
+    >電話</label
+  > -->
     <input
       type="tel"
       name=""
-      id=""
+      id="phone"
       placeholder="請輸入電話"
       class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
     />
@@ -36,7 +33,7 @@
     <input
       type="email"
       name=""
-      id=""
+      id="email"
       placeholder="請輸入 Email"
       class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
     />
@@ -46,7 +43,7 @@
     <input
       type="text"
       name=""
-      id=""
+      id="address"
       placeholder="請輸入寄送地址"
       class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
     />
@@ -55,18 +52,20 @@
     >
     <select
       name=""
-      id=""
+      id="paymentMethod"
       class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
     >
       <option value="ATM" selected>ATM</option>
-      <option value="credit-card">信用卡</option>
-      <option value="convenience-store">超商付款</option>
+      <option value="信用卡">信用卡</option>
+      <option value="超商付款">超商付款</option>
     </select>
   </div>
   <div class="mx-auto mt-12">
     <button
       type="submit"
-      class="w-[250px] sm:w-[255px] h-12 rounded-[4px] bg-black text-white hover:bg-primary text-center"
+      class="w-[250px] sm:w-[255px] h-12 rounded-[4px] bg-black text-white hover:bg-primary text-center disabled:bg-gray-400"
+      id="submitBtn"
+      disabled
     >
       送出預定資料
     </button>

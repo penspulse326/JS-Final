@@ -82,7 +82,9 @@
       </section>
       <section class="bg-[#301E5F] py-10 lg:pt-[60px] lg:pb-20">
         <div class="container">
-          <h2 class="text-center text-[28px] leading-[38px] text-white mb-4 lg:mb-8">
+          <h2
+            class="text-center text-[28px] leading-[38px] text-white mb-4 lg:mb-8"
+          >
             好評推薦
           </h2>
           <div class="recommendation_wall cursor-grab">
@@ -310,24 +312,34 @@
         </div>
       </section>
       <section class="container py-4 lg:pt-8 lg:pb-[72px]">
-        <h2 class="text-center text-[28px] leading-[38px] mb-4 lg:mb-8">運送方式</h2>
-        <ul class="flex flex-col justify-center gap-11 md:flex-row md:gap-[90px]">
+        <h2 class="text-center text-[28px] leading-[38px] mb-4 lg:mb-8">
+          運送方式
+        </h2>
+        <ul
+          class="flex flex-col justify-center gap-11 md:flex-row md:gap-[90px]"
+        >
           <li class="transport-item">
-            <div class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2">
+            <div
+              class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2"
+            >
               <i class="fa-solid fa-cart-shopping text-[50px]"></i>
             </div>
             <h4 class="text-xl">STEP.1</h4>
             <p>選購商品</p>
           </li>
           <li class="transport-item">
-            <div class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2">
+            <div
+              class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2"
+            >
               <i class="fa-solid fa-list-ul text-[50px]"></i>
             </div>
             <h4 class="text-xl">STEP.2</h4>
             <p>填寫預定資料</p>
           </li>
           <li class="transport-item">
-            <div class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2">
+            <div
+              class="w-[115px] h-[115px] border-[3px] border-black rounded-[50%] flex justify-center items-center mb-2"
+            >
               <i class="fa-solid fa-check text-[50px]"></i>
             </div>
             <h4 class="text-xl">STEP.3</h4>
@@ -382,10 +394,16 @@
               <p class="xl:col-span-2">數量</p>
               <p class="md:col-span-2 xl:col-span-3">金額</p>
             </li>
+            <!-- empty cart -->
+            <li
+              class="col-span-full text-primary border-y border-primary py-10 text-center underline decoration-8 decoration-secondary/20 underline-offset-[-4px]"
+            >
+              您的購物車內尚無商品，去逛逛吧！
+            </li>
             <!-- cart item -->
             <!-- delete button & total amount -->
             <ol
-              class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
+              class="grid hidden grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
             >
               <li class="col-span-full md:col-span-2">
                 <button
@@ -415,7 +433,7 @@
           <input
             type="text"
             name=""
-            id=""
+            id="customerName"
             placeholder="請輸入姓名"
             class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
           />
@@ -427,7 +445,7 @@
           <input
             type="tel"
             name=""
-            id=""
+            id="phone"
             placeholder="請輸入電話"
             class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
           />
@@ -438,7 +456,7 @@
           <input
             type="email"
             name=""
-            id=""
+            id="email"
             placeholder="請輸入 Email"
             class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
           />
@@ -449,7 +467,7 @@
           <input
             type="text"
             name=""
-            id=""
+            id="address"
             placeholder="請輸入寄送地址"
             class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
           />
@@ -459,18 +477,20 @@
           >
           <select
             name=""
-            id=""
+            id="paymentMethod"
             class="col-span-4 col-start-2 xl:col-start-5 border border-[#CED4DA] rounded-[4px] pl-3 h-[38px]"
           >
             <option value="ATM" selected>ATM</option>
-            <option value="credit-card">信用卡</option>
-            <option value="convenience-store">超商付款</option>
+            <option value="信用卡">信用卡</option>
+            <option value="超商付款">超商付款</option>
           </select>
         </div>
         <div class="mx-auto mt-12">
           <button
             type="submit"
-            class="w-[250px] sm:w-[255px] h-12 rounded-[4px] bg-black text-white hover:bg-primary text-center"
+            class="w-[250px] sm:w-[255px] h-12 rounded-[4px] bg-black text-white hover:bg-primary text-center disabled:bg-gray-400"
+            id="submitBtn"
+            disabled
           >
             送出預定資料
           </button>

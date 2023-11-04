@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
 /*
-! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -974,6 +974,11 @@ th {
   border-width: 3px;
 }
 
+.border-y{
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
 .border-b{
   border-bottom-width: 1px;
 }
@@ -1000,6 +1005,11 @@ th {
 .border-gray-400{
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-primary{
+  --tw-border-opacity: 1;
+  border-color: rgb(48 30 95 / var(--tw-border-opacity));
 }
 
 .bg-\[\#301E5F\]{
@@ -1213,12 +1223,49 @@ th {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-primary{
+  --tw-text-opacity: 1;
+  color: rgb(48 30 95 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
 
 .line-through{
   text-decoration-line: line-through;
+}
+
+.decoration-secondary{
+  text-decoration-color: #6A33FF;
+}
+
+.decoration-secondary\/50{
+  text-decoration-color: rgb(106 51 255 / 0.5);
+}
+
+.decoration-secondary\/20{
+  text-decoration-color: rgb(106 51 255 / 0.2);
+}
+
+.decoration-solid{
+  text-decoration-style: solid;
+}
+
+.decoration-4{
+  text-decoration-thickness: 4px;
+}
+
+.decoration-8{
+  text-decoration-thickness: 8px;
+}
+
+.underline-offset-0{
+  text-underline-offset: 0px;
+}
+
+.underline-offset-\[-4px\]{
+  text-underline-offset: -4px;
 }
 
 .filter{
@@ -1271,6 +1318,16 @@ th {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.disabled\:bg-gray-500:disabled{
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.disabled\:bg-gray-400:disabled{
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
 @media (min-width: 768px){
   .md\:col-span-2{
     grid-column: span 2 / span 2;
@@ -1278,6 +1335,10 @@ th {
 
   .md\:col-span-3{
     grid-column: span 3 / span 3;
+  }
+
+  .md\:col-span-6{
+    grid-column: span 6 / span 6;
   }
 
   .md\:col-start-6{
