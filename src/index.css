@@ -1,9 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply font-sans;
+  }
+
+  a {
+    @apply duration-300 hover:text-secondary;
+  }
+
+  table * {
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 400;
+  }
+}
 
 @layer components {
   .box {
     @apply max-w-[1110px];
   }
+}
+.recommendation_wall::-webkit-scrollbar {
+  display: none;
+}
+.recommendation_wall {
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.recommendation_wall .active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.transport-card::after {
+  position: absolute;
+  content: "";
+  top: 49px;
+  right: -60px;
+  border: 10px solid #000000;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }

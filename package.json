@@ -2,7 +2,7 @@
   "name": "js-final",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/scripts/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tailwindcss -i ./src/index.css -o ./dist/all.css --watch"
@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+   
   }
 }
