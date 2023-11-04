@@ -1,4 +1,5 @@
-import orderController from "./controllers.js/orderController.js";
+import orderController from "./controllers/orderController.js";
+import {init} from "./controllers/cartController.js"
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
@@ -32,4 +33,10 @@ if (list) {
   list.addEventListener("mousemove", dragHandler); //touchmove
   list.addEventListener("mouseup", stopDrag); //touchend
   list.addEventListener("mouseleave", stopDrag);
+}
+
+//產品列表區
+const productList=document.querySelector(".productList");
+if(productList){
+  init()
 }
