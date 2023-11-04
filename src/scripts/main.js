@@ -4,7 +4,7 @@ import {init} from "./controllers/cartController.js"
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
 
-//好評推薦 拖曳區
+// 好評推薦區塊 拖曳功能
 const list = document.querySelector(".recommendation_wall");
 if (list) {
   let startX = 0;
@@ -39,4 +39,9 @@ if (list) {
 const productList=document.querySelector(".productList");
 if(productList){
   init()
+}
+// 後台管理區塊
+const dashboard = document.querySelector(".dashboard");
+if (dashboard) {
+  const orderManager = new orderController();
 }
