@@ -32,8 +32,8 @@ const apieditCartNum = (data) =>
 const productList = document.querySelector(".productList");//產品列表
 const productSelect = document.querySelector(".productSelect");//產品篩選
 const cartList=document.querySelector(".cartList"); //購物車列表
-cartList.addEventListener("click",cartHandler)
-productList.addEventListener("click",addCartItem)
+const deleteAllBtn=document.querySelector(".deleteAllBtn")//刪除全部品項按鈕
+
 let product = []; //存放商品內容
 let cartData=[];//存放購物車列表內容
 
@@ -75,6 +75,7 @@ const getProductList = () => {
       errorAlert(err);
     });
 };
+
 // 取得產品列表
 function renderProductData(data) {
   productList.innerHTML = data
@@ -163,6 +164,34 @@ const deleteCartItemApi=(id)=>{
     })
 }
 
+// 清除購物車內全部產品api
+const deleteAllCartApi=()=>{
+  Swal.fire({
+      title: '你確定要刪除全部品項?',
+      text: "刪除後購物車就沒有產品了！！",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '刪除囉'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        apideleteAllCart()
+        .then((res)=>{
+          Toast.fire({
+          icon: 'success',
+          title: `${res.data.message}`
+          })
+          getCartListApi()
+        })
+        .catch((err)=>{
+          errorAlert(err)
+        })
+      }
+    })
+}
+
+
 //加入購物車
 function addCartItem(e){
   if(!e.target.className.includes("addbtn"))return
@@ -231,7 +260,9 @@ function cartHandler(e){
   }
 }
 
-
+cartList.addEventListener("click",cartHandler)
+productList.addEventListener("click",addCartItem)
+deleteAllBtn.addEventListener("click",deleteAllCartApi)
 
 
 
