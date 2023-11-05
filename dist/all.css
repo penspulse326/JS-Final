@@ -565,6 +565,12 @@ th {
   padding-left: 24px;
 }
 
+@media (min-width: 640px){
+  .container{
+    max-width: 640px;
+  }
+}
+
 @media (min-width: 768px){
   .container{
     max-width: 768px;
@@ -582,6 +588,12 @@ th {
 @media (min-width: 1110px){
   .container{
     max-width: 1110px;
+  }
+}
+
+@media (min-width: 1536px){
+  .container{
+    max-width: 1536px;
   }
 }
 
@@ -703,6 +715,10 @@ th {
   grid-column: 1 / -1;
 }
 
+.col-span-1{
+  grid-column: span 1 / span 1;
+}
+
 .col-start-1{
   grid-column-start: 1;
 }
@@ -738,6 +754,11 @@ th {
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+
+.-mx-3{
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
 }
 
 .mb-1{
@@ -802,6 +823,14 @@ th {
 
 .mt-7{
   margin-top: 1.75rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
+}
+
+.mt-8{
+  margin-top: 2rem;
 }
 
 .flex{
@@ -932,6 +961,10 @@ th {
   gap: 90px;
 }
 
+.gap-4{
+  gap: 1rem;
+}
+
 .gap-x-\[15px\]{
   -moz-column-gap: 15px;
        column-gap: 15px;
@@ -952,6 +985,11 @@ th {
 
 .gap-y-\[10px\]{
   row-gap: 10px;
+}
+
+.gap-x-6{
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
 }
 
 .whitespace-nowrap{
@@ -1092,6 +1130,11 @@ th {
   padding-bottom: 10px;
 }
 
+.py-6{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-20{
   padding-bottom: 5rem;
 }
@@ -1130,6 +1173,14 @@ th {
 
 .pt-\[60px\]{
   padding-top: 60px;
+}
+
+.pt-4{
+  padding-top: 1rem;
+}
+
+.pb-6{
+  padding-bottom: 1.5rem;
 }
 
 .text-left{
@@ -1174,6 +1225,16 @@ th {
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold{
@@ -1248,6 +1309,12 @@ th {
   text-underline-offset: -4px;
 }
 
+.shadow-md{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1303,7 +1370,25 @@ th {
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
+@media (min-width: 640px){
+  .sm\:w-\[255px\]{
+    width: 255px;
+  }
+
+  .sm\:max-w-\[525px\]{
+    max-width: 525px;
+  }
+}
+
 @media (min-width: 768px){
+  .md\:bottom-8{
+    bottom: 2rem;
+  }
+
+  .md\:left-\[28px\]{
+    left: 28px;
+  }
+
   .md\:col-span-2{
     grid-column: span 2 / span 2;
   }
@@ -1316,12 +1401,33 @@ th {
     grid-column: span 6 / span 6;
   }
 
+  .md\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
+
   .md\:col-start-6{
     grid-column-start: 6;
   }
 
+  .md\:col-start-1{
+    grid-column-start: 1;
+  }
+
+  .md\:mx-0{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .md\:mt-8{
+    margin-top: 2rem;
+  }
+
   .md\:block{
     display: block;
+  }
+
+  .md\:inline-block{
+    display: inline-block;
   }
 
   .md\:grid{
@@ -1344,9 +1450,29 @@ th {
     gap: 90px;
   }
 
+  .md\:gap-6{
+    gap: 1.5rem;
+  }
+
   .md\:gap-x-\[30px\]{
     -moz-column-gap: 30px;
          column-gap: 30px;
+  }
+
+  .md\:border-b-\[40px\]{
+    border-bottom-width: 40px;
+  }
+
+  .md\:border-b-\[10px\]{
+    border-bottom-width: 10px;
+  }
+
+  .md\:border-b-8{
+    border-bottom-width: 8px;
+  }
+
+  .md\:border-b-\[20px\]{
+    border-bottom-width: 20px;
   }
 
   .md\:px-8{
@@ -1354,8 +1480,39 @@ th {
     padding-right: 2rem;
   }
 
+  .md\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .md\:text-left{
     text-align: left;
+  }
+
+  .md\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:shadow-none{
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
 
@@ -1406,6 +1563,10 @@ th {
     grid-column: span 4 / span 4;
   }
 
+  .xl\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
+
   .xl\:col-start-2{
     grid-column-start: 2;
   }
@@ -1422,12 +1583,32 @@ th {
     grid-column-start: 9;
   }
 
+  .xl\:col-start-6{
+    grid-column-start: 6;
+  }
+
+  .xl\:col-start-3{
+    grid-column-start: 3;
+  }
+
+  .xl\:col-start-7{
+    grid-column-start: 7;
+  }
+
   .xl\:ml-\[-22px\]{
     margin-left: -22px;
   }
 
   .xl\:mt-\[60px\]{
     margin-top: 60px;
+  }
+
+  .xl\:block{
+    display: block;
+  }
+
+  .xl\:hidden{
+    display: none;
   }
 
   .xl\:h-\[420px\]{
@@ -1454,14 +1635,27 @@ th {
     justify-content: flex-start;
   }
 
+  .xl\:gap-12{
+    gap: 3rem;
+  }
+
   .xl\:gap-x-\[30px\]{
     -moz-column-gap: 30px;
          column-gap: 30px;
   }
 
+  .xl\:border-b-\[40px\]{
+    border-bottom-width: 40px;
+  }
+
   .xl\:px-0{
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .xl\:py-9{
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
   }
 
   .xl\:pb-16{
@@ -1495,6 +1689,28 @@ th {
 
   .xl\:text-\[28px\]{
     font-size: 28px;
+  }
+
+  .xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .xl\:shadow-none{
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+}
+
+@media (min-width: 1536px){
+  .\32xl\:text-\[32px\]{
+    font-size: 32px;
   }
 }
 

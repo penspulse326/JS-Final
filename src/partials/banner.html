@@ -1,44 +1,58 @@
 <link rel="stylesheet" href="../../dist/all.css" />
 <section class="xl:pt-8 xl:pb-[60px]">
-  <div class="box grid xl:grid-cols-12 mx-auto gap-x-[30px]">
-    <div class="relative xl:col-span-12 xl:h-[420px]">
+  <div
+    class="box grid grid-cols-4 xl:grid-cols-12 xl:gap-x-[30px] mx-auto px-3 md:px-8 xl:px-0"
+  >
+    <div class="relative col-span-4 xl:col-span-12 -mx-3 md:mx-0 xl:h-[420px]">
       <img
         class="hover:sepia duration-300"
         src="../images/banner.png"
         alt="banner"
       />
-      <h2 class="absolute bottom-12 left-[52px] text-white 2xl:text-[32px]">
+      <h2
+        class="hidden md:block absolute md:bottom-8 bottom-12 md:left-[28px] left-[52px] text-white 2xl:text-[32px]"
+      >
         窩窩家居<br />
         跟您一起品味生活
       </h2>
     </div>
-    <h3 class="col-span-2 col-start-6 xl:mt-[60px] xl:text-[28px] text-center">
+    <h2 class="md:hidden col-span-4 mt-4 text-lg text-center font-bold">
+      窩窩家居<br />
+      跟您一起品味生活
+    </h2>
+    <h3
+      class="col-span-2 col-start-2 xl:col-start-6 mt-4 md:mt-8 xl:mt-[60px] md:text-2xl xl:text-[28px] text-center"
+    >
       床墊優勢
     </h3>
-    <ul class="col-span-12 flex gap-[30px] mt-7">
+    <ul
+      class="col-span-4 xl:col-span-12 flex flex-col md:flex-row gap-[30px] mt-7"
+    >
       <li>
         <img
-          class="hover:sepia"
+          class="mx-auto hover:sepia"
           src="../images/banner-sub-1.png"
           alt="original-woods"
         />
-        <h4 class="mt-2 text-xl text-center">原木料環保</h4>
+        <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">
+          原木料環保
+        </h4>
       </li>
       <li>
         <img
-          class="hover:sepia"
+          class="mx-auto hover:sepia"
           src="../images/banner-sub-2.png"
           alt="convenient-storage"
         />
-        <h4 class="mt-2 text-xl text-center">好收納</h4>
+        <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">好收納</h4>
       </li>
       <li>
         <img
-          class="hover:sepia"
+          class="mx-auto hover:sepia"
           src="../images/banner-sub-3.png"
           alt="easy-to-combine"
         />
-        <h4 class="mt-2 text-xl text-center">好組裝</h4>
+        <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">好組裝</h4>
       </li>
     </ul>
   </div>
