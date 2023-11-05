@@ -1,4 +1,4 @@
-import { cart } from "./cartController.js";
+import { cartData } from "./cartController.js";
 
 const apiPath = "finn";
 const baseUrl = "https://livejs-api.hexschool.io";
@@ -72,7 +72,7 @@ function checkValue() {
     });
   }
   // 送出按鈕設置
-  if (!errors && cart.length > 0) {
+  if (!errors && cartData.length > 0) {
     submitBtn.removeAttribute("disabled");
   } else {
     submitBtn.setAttribute("disabled", "true");

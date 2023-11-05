@@ -1,12 +1,5 @@
 import orderController from "./controllers/orderController.js";
-import {
-  init,
-  productSelectHandler,
-  addToCart,
-  product,
-  delectProduct,
-  delectAllProduct,
-} from "./controllers/cartController.js";
+import { init, productSelectHandler } from "./controllers/cartController.js";
 import { getValue, apiPostOrder } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
@@ -43,7 +36,7 @@ if (list) {
   list.addEventListener("mouseleave", stopDrag);
 }
 
-//產品列表區
+//產品列表區及購物車列表區
 const productList = document.querySelector(".productList");
 if (productList) {
   init();
@@ -54,16 +47,6 @@ const productSelect = document.querySelector(".productSelect");
 if (productSelect) {
   productSelectHandler();
 }
-
-// 監聽加入購物車按鈕
-productList.addEventListener("click", (e) => {
-  // 取得按鈕的品項ID
-  const productId = e.target.getAttribute("data-id");
-  const targetProduct = product.find((product) => product.id === productId);
-  if (targetProduct) {
-    addToCart(targetProduct);
-  }
-});
 
 // 刪除購物車品項
 document.querySelector("#cartSection").addEventListener("click", (e) => {
