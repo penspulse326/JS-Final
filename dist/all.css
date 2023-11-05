@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap");
 
 /*
-! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -731,6 +731,10 @@ th {
   grid-column-start: 3;
 }
 
+.col-start-5{
+  grid-column-start: 5;
+}
+
 .col-start-4{
   grid-column-start: 4;
 }
@@ -742,6 +746,10 @@ th {
 .-mx-3{
   margin-left: -0.75rem;
   margin-right: -0.75rem;
+}
+
+.col-start-4{
+  grid-column-start: 4;
 }
 
 .mx-auto{
@@ -771,10 +779,6 @@ th {
 
 .mb-8{
   margin-bottom: 2rem;
-}
-
-.ml-2{
-  margin-left: 0.5rem;
 }
 
 .ml-\[95px\]{
@@ -817,6 +821,11 @@ th {
   margin-top: 1.75rem;
 }
 
+
+.ml-2{
+  margin-left: 0.5rem;
+}
+
 .mt-8{
   margin-top: 2rem;
 }
@@ -851,6 +860,10 @@ th {
 
 .h-\[302px\]{
   height: 302px;
+}
+
+.h-\[385px\]{
+  height: 385px;
 }
 
 .h-\[38px\]{
@@ -1261,11 +1274,6 @@ th {
   color: rgb(129 138 145 / var(--tw-text-opacity));
 }
 
-.text-\[\#C72424\]{
-  --tw-text-opacity: 1;
-  color: rgb(199 36 36 / var(--tw-text-opacity));
-}
-
 .text-primary{
   --tw-text-opacity: 1;
   color: rgb(48 30 95 / var(--tw-text-opacity));
@@ -1279,6 +1287,11 @@ th {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#C72424\]{
+  --tw-text-opacity: 1;
+  color: rgb(199 36 36 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -1550,12 +1563,12 @@ th {
     grid-column-start: 9;
   }
 
-  .xl\:ml-\[-22px\]{
-    margin-left: -22px;
-  }
-
   .xl\:mt-\[60px\]{
     margin-top: 60px;
+  }
+
+  .xl\:ml-\[-22px\]{
+    margin-left: -22px;
   }
 
   .xl\:h-\[420px\]{
