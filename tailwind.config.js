@@ -5,8 +5,8 @@ module.exports = {
     container: {
       center: true,
       padding: {
-        DEFAULT: '24px',
-        md: '12px',
+        DEFAULT: "24px",
+        md: "12px",
       },
     },
     extend: {
@@ -15,15 +15,13 @@ module.exports = {
         secondary: "#6A33FF",
       },
       screens: {
+        md: "768px",
+        lg: "992px",
         xl: "1110px",
       },
     },
     fontFamily: {
       sans: ["Noto Sans TC", "sans-serif"],
-    },
-    screens: {
-      md: "768px",
-      lg: "992px",
     },
   },
   plugins: [
