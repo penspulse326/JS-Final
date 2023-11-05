@@ -32,10 +32,24 @@ const apieditCartNum = (data) =>
 const productList = document.querySelector(".productList");//產品列表
 const productSelect = document.querySelector(".productSelect");//產品篩選
 const cartList=document.querySelector(".cartList"); //購物車列表
-
+cartList.addEventListener("click",cartHandler)
 productList.addEventListener("click",addCartItem)
 let product = []; //存放商品內容
 let cartData=[];//存放購物車列表內容
+
+//SweetAlert2
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
 //錯誤彈跳
 function errorAlert(err) {
   Swal.fire({
@@ -45,6 +59,7 @@ function errorAlert(err) {
     showConfirmButton: true,
   });
 }
+//初始化
 export function init() {
   getProductList();
   getCartListApi();
@@ -133,6 +148,21 @@ const addCartApi=(id)=>{
     })
 }
 
+// 刪除購物車內特定產品api
+const deleteCartItemApi=(id)=>{
+  apideleteCartItem(id)
+    .then((res)=>{
+      getCartListApi()
+      Toast.fire({
+        icon: 'success',
+        title: `成功刪除囉`
+        })
+    })
+    .catch((err)=>{
+      errorAlert(err)
+    })
+}
+
 //加入購物車
 function addCartItem(e){
   if(!e.target.className.includes("addbtn"))return
@@ -153,7 +183,7 @@ function renderCartList(){
       <li class="xl:col-span-2 text-right md:text-left">
         <span class="mr-2 md:hidden">數量</span>
         <button type="button"><i class="fa-solid fa-plus add" data-id="${item.id}" data-num="${item.quantity+1}"></i></button>
-        ${item.quantity}
+        <span class="mx-1">${item.quantity}</span>
         <button type="button"><i class="fa-solid fa-minus remove" data-id="${item.id}" data-num="${item.quantity-1}"></i></button>
 
       </li>
@@ -181,7 +211,25 @@ function emptyCartblock(){
   }
 }
 
-
+// 刪除或調整購物車內特定產品
+function cartHandler(e){
+  e.preventDefault();
+  if(e.target.className.includes("delSingleBtn")){
+    Swal.fire({
+      title: '你確定要刪除該品項?',
+      text: "刪除就不能再反悔了！！",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '刪除囉'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteCartItemApi(e.target.dataset.id)
+      }
+    })
+  }
+}
 
 
 
