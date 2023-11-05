@@ -37,28 +37,6 @@ const deleteAllBtn=document.querySelector(".deleteAllBtn")//刪除全部品項�
 let product = []; //存放商品內容
 let cartData=[];//存放購物車列表內容
 
-//SweetAlert2
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 1500,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
-
-//錯誤彈跳
-function errorAlert(err) {
-  Swal.fire({
-    icon: "error",
-    title: `${err?.name}`,
-    text: `${err?.message}`,
-    showConfirmButton: true,
-  });
-}
 //初始化
 export function init() {
   getProductList();
@@ -86,12 +64,10 @@ function renderProductData(data) {
       <img src="${item.images}" alt="${item.title}" class="w-full h-[302px]">
       <button type="button" class="addbtn bg-black text-white w-full text-center hover:bg-primary py-2 mb-2" data-id="${item.id}">加入購物車</button>
       <h3 class="text-xl mb-2">${item.title}</h3>
-      <span class="text-xl line-through">NT$${item.origin_price}</span>
-      <p class="text-[28px]">NT$${item.price}</p>
+      <span class="text-xl line-through">NT$${money(item.origin_price)}</span>
+      <p class="text-[28px]">NT$${money(item.price)}</p>
     </li>
-  `
-    )
-    .join("");
+  `).join("");
 }
 
 //productSelect 產品篩選
@@ -117,7 +93,7 @@ const getCartListApi=()=>{
       cartData=res.data.carts
       emptyCartblock()
       renderCartList()
-      document.querySelector("#totalAmount").textContent = `NT$${res.data.finalTotal}`;
+      document.querySelector("#totalAmount").textContent = `NT$${money(res.data.finalTotal)}`;
     })
     .catch((err)=>{
       errorAlert(err)
@@ -235,7 +211,7 @@ function renderCartList(){
         <p>${item.product.title}</p>
       </li>
       <li class="col-span-2">
-        <span class="mr-2 md:hidden">單價</span>$${item.product.price}
+        <span class="mr-2 md:hidden">單價</span>$${money(item.product.price)}
       </li>
       <li class="xl:col-span-2 text-right md:text-left">
         <span class="mr-2 md:hidden">數量</span>
@@ -245,7 +221,7 @@ function renderCartList(){
 
       </li>
       <li class="hidden md:block xl:col-span-2">
-        <span class="md:hidden">金額</span>$${item.product.price*item.quantity}
+        <span class="md:hidden">金額</span>$${money(item.product.price*item.quantity)}
       </li>
       <li class="flex items-center justify-end xl:justify-start">
         <button type="button" >
@@ -297,6 +273,29 @@ function cartHandler(e){
   }
 }
 
+//SweetAlert2
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+//錯誤彈跳
+function errorAlert(err) {
+  Swal.fire({
+    icon: "error",
+    title: `${err?.name}`,
+    text: `${err?.message}`,
+    showConfirmButton: true,
+  });
+}
+
 //按鈕disabled
 function disabledBtn(target){
   if (target.disabled) {
@@ -306,6 +305,11 @@ function disabledBtn(target){
 } else {
     target.disabled=true
   }
+}
+
+function money(num){  //必須為字串
+  let str = num.toString().split(".");
+  return str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 cartList.addEventListener("click",cartHandler)
