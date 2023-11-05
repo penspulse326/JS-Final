@@ -24,11 +24,19 @@
     <script type="module" src="./src/scripts/main.js" defer></script>
   </head>
   <body>
-    <nav class="sticky top-0 z-50 border-b-[40px] border-black bg-white">
-      <div class="box mx-auto">
-        <div class="flex justify-between items-center py-9">
-          <a href="#"><h1 class="xl:text-2xl font-bold">WOWOROOM</h1></a>
-          <ul class="flex gap-12">
+    <nav
+      class="sticky top-0 z-50 shadow-md xl:shadow-none xl:border-b-[40px] border-black bg-white"
+    >
+      <div class="box mx-auto px-3 md:px-8 xl:px-0">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center py-6 xl:py-9"
+        >
+          <a href="#"
+            ><h1 class="text-lg xl:text-2xl font-bold">WOWOROOM</h1></a
+          >
+          <ul
+            class="flex gap-4 md:gap-6 xl:gap-12 mt-4 md:m-0 text-sm xl:text-base"
+          >
             <li><a href="#">床墊優勢</a></li>
             <li><a href="#">好評推薦</a></li>
             <li><a href="#">運送方式</a></li>
@@ -38,50 +46,190 @@
       </div>
     </nav>
     <main>
-      <section class="xl:pt-8 xl:pb-[60px]">
-        <div class="box grid xl:grid-cols-12 mx-auto gap-x-[30px]">
-          <div class="relative xl:col-span-12 xl:h-[420px]">
+      <section class="pb-10 md:pt-4 xl:pt-8 xl:pb-[60px]">
+        <div
+          class="box grid grid-cols-4 xl:grid-cols-12 xl:gap-x-[30px] mx-auto px-3 md:px-8 xl:px-0"
+        >
+          <div
+            class="relative col-span-4 xl:col-span-12 -mx-3 md:mx-0 xl:h-[420px]"
+          >
             <img
               class="hover:sepia duration-300"
               src="./src/images/banner.png"
               alt="banner"
             />
             <h2
-              class="absolute bottom-12 left-[52px] text-white 2xl:text-[32px]"
+              class="hidden md:block absolute md:bottom-8 bottom-12 md:left-[28px] left-[52px] text-white 2xl:text-[32px]"
             >
               窩窩家居<br />
               跟您一起品味生活
             </h2>
           </div>
-          <h2
-            class="col-span-2 col-start-6 xl:mt-[60px] xl:text-[28px] text-center"
+          <h2 class="md:hidden col-span-4 mt-4 text-lg text-center font-bold">
+            窩窩家居<br />
+            跟您一起品味生活
+          </h2>
+          <h3
+            class="col-span-2 col-start-2 xl:col-start-6 mt-8 xl:mt-[60px] text-[28px] text-center"
           >
             床墊優勢
-          </h2>
-          <ul class="col-span-12 flex gap-[30px] mt-7">
+          </h3>
+          <ul
+            class="col-span-4 xl:col-span-12 flex flex-col md:flex-row gap-[30px] mt-7"
+          >
             <li>
               <img
-                class="hover:sepia duration-300"
+                class="mx-auto hover:sepia"
                 src="./src/images/banner-sub-1.png"
                 alt="original-woods"
               />
-              <h4 class="mt-2 text-xl text-center">原木料環保</h4>
+              <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">
+                原木料環保
+              </h4>
             </li>
             <li>
               <img
-                class="hover:sepia duration-300"
+                class="mx-auto hover:sepia"
                 src="./src/images/banner-sub-2.png"
                 alt="convenient-storage"
               />
-              <h4 class="mt-2 text-xl text-center">好收納</h4>
+              <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">
+                好收納
+              </h4>
             </li>
             <li>
               <img
-                class="hover:sepia duration-300"
+                class="mx-auto hover:sepia"
                 src="./src/images/banner-sub-3.png"
                 alt="easy-to-combine"
               />
-              <h4 class="mt-2 text-xl text-center">好組裝</h4>
+              <h4 class="mt-2 text-sm md:text-base xl:text-xl text-center">
+                好組裝
+              </h4>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pt-4 pb-6 xl:pt-12 xl:pb-16 bg-[#F8F8F8]">
+        <div
+          class="box mx-auto grid grid-cols-4 xl:grid-cols-12 gap-x-6 xl:gap-x-[30px] px-3 md:px-8 xl:px-0"
+        >
+          <h2 class="col-span-4 xl:col-start-5 text-[28px] text-center">
+            家具比較
+          </h2>
+          <ul
+            class="col-span-4 xl:col-span-8 xl:col-start-3 mt-5 text-center whitespace-nowrap"
+          >
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-xs md:text-base xl:text-xl font-bold"
+              >
+                <span class="md:hidden">窩窩家具</span>
+                <span class="hidden md:inline-block">窩窩系統模組家具</span>
+              </p>
+              <p
+                class="col-span-1 xl:col-span-2 col-start-3 xl:col-start-5 text-[#797979] text-xs md:text-base xl:text-xl"
+              >
+                組合式家具
+              </p>
+              <p
+                class="col-span-1 xl:col-span-2 col-start-4 xl:col-start-7 text-[#797979] text-xs md:text-base xl:text-xl"
+              >
+                實木家具
+              </p>
+            </li>
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-1 text-xs md:text-base xl:text-xl"
+              >
+                可單人自行組裝
+              </p>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
+              <p
+                class="col-span-1 xl:col-span-2 col-start-3 xl:col-start-5 text-[#797979] text-xs md:text-base xl:text-xl"
+              >
+                不一定
+              </p>
+            </li>
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-1 text-xs md:text-base xl:text-xl"
+              >
+                可多次重複拆裝
+              </p>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
+            </li>
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-1 text-xs md:text-base xl:text-xl"
+              >
+                床墊規格彈性大
+              </p>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
+              <p
+                class="col-span-1 xl:col-span-2 col-start-3 xl:col-start-5 text-[#797979] text-xs md:text-base xl:text-xl"
+              >
+                不一定
+              </p>
+              <p
+                class="col-span-1 xl:col-span-2 col-start-4 xl:col-start-7 text-[#797979] text-xs md:text-base xl:text-xl"
+              >
+                不一定
+              </p>
+            </li>
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-1 text-xs md:text-base xl:text-xl"
+              >
+                材質可長久使用
+              </p>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-4 xl:col-start-7 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
+            </li>
+            <li
+              class="grid grid-cols-4 xl:grid-cols-8 gap-x-6 xl:gap-x-[30px] py-3 border-b border-[#B9B9B9]"
+            >
+              <p
+                class="col-span-1 xl:col-span-2 col-start-1 text-xs md:text-base xl:text-xl"
+              >
+                小客車即可搬運
+              </p>
+              <span
+                class="material-symbols-outlined col-span-1 xl:col-span-2 col-start-2 xl:col-start-3 text-secondary text-4xl leading-[0.75]"
+              >
+                done
+              </span>
             </li>
           </ul>
         </div>
