@@ -4,6 +4,8 @@ import {
   productSelectHandler,
   addToCart,
   product,
+  delectProduct,
+  delectAllProduct,
 } from "./controllers/cartController.js";
 import { getValue, apiPostOrder } from "./controllers/formController.js";
 
@@ -60,6 +62,16 @@ productList.addEventListener("click", (e) => {
   const targetProduct = product.find((product) => product.id === productId);
   if (targetProduct) {
     addToCart(targetProduct);
+  }
+});
+
+// 刪除購物車品項
+document.querySelector("#cartSection").addEventListener("click", (e) => {
+  if (e.target.id === "delectItem") {
+    delectProduct(e.target);
+  }
+  if (e.target.id === "delectAll") {
+    delectAllProduct();
   }
 });
 

@@ -90,20 +90,16 @@ export function productSelectHandler() {
   });
 }
 
-// 加入購物車
-let totalAmount = 0;
-
 // cart post api data
 let cartItemData = {
   data: {},
 };
 
 // 購物車商品
-let cart = [];
+export let cart = [];
 
 export function addToCart(targetProduct) {
   const existingItem = cart.find((item) => item.id === targetProduct.id);
-  totalAmount += targetProduct.price;
 
   if (existingItem) {
     existingItem.quantity++;
@@ -125,13 +121,16 @@ function renderCart(cartItem) {
   cartContainer.classList.add("grid"); // 顯示購物車品項容器
   cartContainer.classList.remove("hidden");
   cartContainer.innerHTML = "";
+  let totalAmount = 0;
 
   cartItem.map((item) => {
     const itemTotalAmount = item.quantity * item.price;
+    totalAmount += itemTotalAmount;
+
     cartContainer.innerHTML += `
     <ol class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center pb-5 mb-5 border-b border-gray-400 gap-y-3">
       <li class="col-span-full md:col-span-3 flex items-center gap-x-[15px] xl:gap-x-[30px]">
-        <img src="${item.images}" class="w-20 h-20" alt="" />
+        <img src="${item.images}" class="w-20 h-20 object-cover" alt="" />
         <p>${item.title}</p>
       </li>
       <li class="col-span-2">
@@ -143,11 +142,38 @@ function renderCart(cartItem) {
       <li class="hidden md:block xl:col-span-2">
         <span class="md:hidden">金額</span>$${itemTotalAmount}
       </li>
-      <li>
-        <span class="material-symbols-outlined flex items-center justify-end xl:justify-start">close</span>
+      <li >
+        <span class="material-symbols-outlined flex items-center justify-end xl:justify-start cursor-pointer" id="delectItem" product-id="${item.id}">close</span>
       </li>
     </ol>
     `;
   });
   document.querySelector("#totalAmount").innerHTML = `$${totalAmount}`;
+
+  // 空購物車畫面渲染
+  if (cart.length === 0) {
+    document.querySelector("#emptyCart").classList.remove("hidden"); // 顯示空購物車樣式
+    document.querySelector("#emptyCart").classList.add("grid");
+    document.querySelector("#btnAmount").classList.remove("grid"); // 隱藏刪除按鈕及總金額
+    document.querySelector("#btnAmount").classList.add("hidden");
+    cartContainer.classList.remove("grid"); // 隱藏購物車品項容器
+    cartContainer.classList.add("hidden");
+  }
+}
+
+// 刪除個別品項
+export function delectProduct(targetItem) {
+  // 取得商品id
+  // 打api
+  const productId = targetItem.getAttribute("product-id");
+
+  // 畫面重新渲染
+  cart = cart.filter((item) => item.id !== productId);
+  renderCart(cart);
+}
+
+// 刪除所有品項
+export function delectAllProduct() {
+  cart = [];
+  renderCart(cart);
 }
