@@ -100,7 +100,6 @@ const getCartListApi=()=>{
     })
 }
 
-
 // 加入購物車api
 const addCartApi=(id)=>{
   let cartID = {
@@ -180,7 +179,7 @@ const editCartNumApi=(id,num)=>{
       getCartListApi()
     })
     .catch((err)=>{
-          errorAlert(err)
+      errorAlert(err)
     })
 }
 
@@ -266,10 +265,12 @@ function cartHandler(e){
     if(e.target.dataset.num==="0")return
     disabledBtn(e.target.parentElement)
     editCartNumApi(e.target.dataset.id,e.target.dataset.num)
-    Toast.fire({
+    setTimeout(()=>{
+      Toast.fire({
           icon: 'success',
           title: `成功修改該品項數量`
     })
+    },1500)
   }
 }
 
@@ -307,6 +308,7 @@ function disabledBtn(target){
   }
 }
 
+//數字加逗點
 function money(num){  //必須為字串
   let str = num.toString().split(".");
   return str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
