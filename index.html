@@ -403,13 +403,16 @@
             <!-- empty cart -->
             <li
               class="col-span-full text-primary border-y border-primary py-10 text-center underline decoration-8 decoration-secondary/20 underline-offset-[-4px]"
+              id="emptyCart"
             >
               您的購物車內尚無商品，去逛逛吧！
             </li>
-            <!-- cart item -->
+            <!-- cart container -->
+            <div id="cartContainer"></div>
             <!-- delete button & total amount -->
             <ol
-              class="grid hidden grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
+              class="hidden grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
+              id="btnAmount"
             >
               <li class="col-span-full md:col-span-2">
                 <button
@@ -422,6 +425,7 @@
               <li class="md:col-start-6 xl:col-start-8 xl:text-left">總金額</li>
               <li
                 class="col-span-3 md:col-span-2 xl:col-start-9 text-[28px] text-right md:text-left xl:text-right"
+                id="totalAmount"
               ></li>
             </ol>
           </ul>
