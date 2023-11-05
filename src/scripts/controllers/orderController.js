@@ -7,6 +7,7 @@ class orderController {
     this.btnLogin = document.querySelector(".btn-login");
     this.tableElement = document.querySelector(".table-order");
     this.btnClear = document.querySelector(".btn-clearOrders");
+    this.btnBack = document.querySelector(".btn-chartBack");
     this.hintNotLogin = document.querySelector(".section-not-login");
     this.order = document.querySelector(".section-order");
     this.orderList = document.querySelector(".order-list");
@@ -35,31 +36,13 @@ class orderController {
     this.tableElement.innerHTML =
       tableTitleHTML + this.orderData.map((item) => TableItem(item)).join("");
 
-    const chart = c3.generate({
-      data: {
-        columns: [
-          ["data1", 30],
-          ["data2", 120],
-        ],
-        type: "pie",
-        onclick: function (d, i) {
-          console.log("onclick", d, i);
-        },
-        onmouseover: function (d, i) {
-          console.log("onmouseover", d, i);
-        },
-        onmouseout: function (d, i) {
-          console.log("onmouseout", d, i);
-        },
-      },
-    });
+    this.showChart();
   }
   // 請求訂單列表
   getOrder() {
     axios
       .get(`/admin/${apiPath}/orders`)
       .then((res) => {
-        console.log(res);
         if (res.data.status) {
           this.orderData = res.data.orders;
           this.renderTable();
@@ -159,6 +142,103 @@ class orderController {
       .catch(() =>
         Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error")
       );
+  }
+  // 顯示圖表
+  showChart() {
+    const { categoryData, subData } = this.transformOrderData(this.orderData);
+
+    let chart = c3.generate({
+      bindto: "#chart",
+      data: {
+        type: "pie",
+        columns: Object.entries(categoryData),
+        onclick: (d) => showSubData(d.id),
+      },
+      size: {
+        width: 350,
+        height: 350,
+      },
+      padding: {
+        bottom: 32,
+      },
+      color: {
+        pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
+      },
+    });
+
+    const showSubData = (id) => {
+      chart.destroy();
+      chart = c3.generate({
+        bindto: "#chart",
+        data: {
+          type: "pie",
+          columns: Object.entries(subData[id]),
+        },
+        size: {
+          width: 350,
+          height: 350,
+        },
+        padding: {
+          bottom: 32,
+        },
+        color: {
+          pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
+        },
+      });
+
+      this.btnBack.classList.remove("hidden");
+      this.btnBack.addEventListener("click", () => {
+        this.btnBack.classList.add("hidden");
+        chart.destroy();
+        chart = c3.generate({
+          bindto: "#chart",
+          data: {
+            type: "pie",
+            columns: Object.entries(categoryData),
+            onclick: (d) => showSubData(d.id),
+          },
+          size: {
+            width: 350,
+            height: 350,
+          },
+          padding: {
+            bottom: 32,
+          },
+          color: {
+            pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
+          },
+        });
+      });
+    };
+  }
+  // 資料轉換
+  transformOrderData(data) {
+    const productsData = data.map((item) => item.products);
+    const categoryData = {};
+    const subData = {};
+
+    productsData.forEach((arr) => {
+      arr.forEach((item) => {
+        const { category, title, price, quantity } = item;
+        const totalPrice = price * quantity;
+
+        if (!categoryData[category]) {
+          categoryData[category] = totalPrice;
+        } else {
+          categoryData[category] += totalPrice;
+        }
+
+        if (!subData[category]) {
+          subData[category] = { [title]: totalPrice };
+        } else if (!subData[category][title]) {
+          subData[category][title] = totalPrice;
+        } else {
+          subData[category][title] += totalPrice;
+        }
+      });
+    });
+
+    return { categoryData, subData };
   }
 }
 

@@ -609,8 +609,8 @@ th {
   grid-column: span 3 / span 3;
 }
 
-.col-span-4{
-  grid-column: span 4 / span 4;
+.col-span-6{
+  grid-column: span 6 / span 6;
 }
 
 .col-span-8{
@@ -627,6 +627,10 @@ th {
 
 .col-start-3{
   grid-column-start: 3;
+}
+
+.col-start-4{
+  grid-column-start: 4;
 }
 
 .col-start-5{
@@ -670,8 +674,16 @@ th {
   margin-right: 1rem;
 }
 
+.mt-12{
+  margin-top: 3rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
+}
+
+.mt-24{
+  margin-top: 6rem;
 }
 
 .mt-3{
@@ -686,12 +698,8 @@ th {
   margin-top: 1.75rem;
 }
 
-.mt-12{
-  margin-top: 3rem;
-}
-
-.mt-24{
-  margin-top: 6rem;
+.inline-block{
+  display: inline-block;
 }
 
 .flex{
@@ -714,10 +722,6 @@ th {
   height: 115px;
 }
 
-.h-\[300px\]{
-  height: 300px;
-}
-
 .h-\[302px\]{
   height: 302px;
 }
@@ -728,10 +732,6 @@ th {
 
 .h-\[40px\]{
   height: 40px;
-}
-
-.h-\[385px\]{
-  height: 385px;
 }
 
 .w-\[115px\]{
@@ -770,16 +770,16 @@ th {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
-.grid-rows-3{
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-}
-
 .flex-col{
   flex-direction: column;
 }
 
 .items-center{
   align-items: center;
+}
+
+.justify-end{
+  justify-content: flex-end;
 }
 
 .justify-center{
@@ -884,6 +884,11 @@ th {
   padding-right: 0.25rem;
 }
 
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -945,10 +950,6 @@ th {
 
 .pt-\[60px\]{
   padding-top: 60px;
-}
-
-.pt-12{
-  padding-top: 3rem;
 }
 
 .text-left{
