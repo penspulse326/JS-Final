@@ -1,5 +1,6 @@
 import orderController from "./controllers/orderController.js";
-import {init,productSelectHandler} from "./controllers/cartController.js"
+import { init, productSelectHandler } from "./controllers/cartController.js";
+import { getValue, apiPostOrder } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
@@ -36,16 +37,22 @@ if (list) {
 }
 
 //產品列表區
-const productList=document.querySelector(".productList");
-if(productList){
-  init()
+const productList = document.querySelector(".productList");
+if (productList) {
+  init();
 }
 
 //產品篩選區
-const productSelect=document.querySelector(".productSelect")
-if(productSelect){
-  productSelectHandler()
+const productSelect = document.querySelector(".productSelect");
+if (productSelect) {
+  productSelectHandler();
 }
+
+// 監聽送出訂單按鈕
+document.querySelector("#submitBtn").addEventListener("click", () => {
+  getValue();
+  apiPostOrder();
+});
 
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");
