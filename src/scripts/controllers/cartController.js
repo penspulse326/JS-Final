@@ -164,7 +164,7 @@ const deleteCartItemApi=(id)=>{
     })
 }
 
-// 清除購物車內全部產品api
+// 刪除購物車內全部產品api
 const deleteAllCartApi=()=>{
   Swal.fire({
       title: '你確定要刪除全部品項?',
@@ -191,11 +191,39 @@ const deleteAllCartApi=()=>{
     })
 }
 
+//編輯購物車產品數量api
+const editCartNumApi=(id,num)=>{
+  let cartID = {
+    data: {
+      id,
+      quantity: num*1
+    }
+    };
+  apieditCartNum(cartID)
+    .then((res)=>{
+      getCartListApi()
+    })
+    .catch((err)=>{
+          errorAlert(err)
+    })
+}
 
 //加入購物車
 function addCartItem(e){
-  if(!e.target.className.includes("addbtn"))return
+  if(cartData.some((item)=>item.product.id===e.target.dataset.id)){
+    let {id,quantity}=(cartData.find((item)=>item.product.id===e.target.dataset.id))
+    editCartNumApi(id,quantity+1)
+    Swal.fire({
+          icon: 'success',
+          title: `新增成功`,
+          text: '請至購物車查看',
+          showConfirmButton: false,
+          timer: 1000,
+    });
+  }
+  else if(e.target.className.includes("addbtn")){
     addCartApi(e.target.dataset.id)
+  }
 }
 
 // 取得購物車列表
@@ -258,6 +286,26 @@ function cartHandler(e){
       }
     })
   }
+  if(e.target.className.includes("add")||e.target.className.includes("remove")){
+    if(e.target.dataset.num==="0")return
+    disabledBtn(e.target.parentElement)
+    editCartNumApi(e.target.dataset.id,e.target.dataset.num)
+    Toast.fire({
+          icon: 'success',
+          title: `成功修改該品項數量`
+    })
+  }
+}
+
+//按鈕disabled
+function disabledBtn(target){
+  if (target.disabled) {
+   setTimeout(()=>{
+      target.disabled=false
+    },1500)
+} else {
+    target.disabled=true
+  }
 }
 
 cartList.addEventListener("click",cartHandler)
@@ -267,82 +315,3 @@ deleteAllBtn.addEventListener("click",deleteAllCartApi)
 
 
 
-// // 加入購物車
-// let totalAmount = 0;
-
-// // cart post api data
-// let cartItemData = {
-//   data: {},
-// };
-
-// // 購物車商品
-// let cart = [];
-
-// export function addToCart(targetProduct) {
-//   const existingItem = cart.find((item) => item.id === targetProduct.id);
-//   totalAmount += targetProduct.price;
-
-//   if (existingItem) {
-//     existingItem.quantity++;
-//     renderCart(cart);
-//   } else {
-//     targetProduct.quantity = 1;
-//     cart.push(targetProduct);
-//     renderCart(cart);
-//   }
-// }
-
-// 購物車畫面渲染
-// const cartContainer = document.querySelector("#cartContainer");
-
-// function renderCart(cartItem) {
-//   document.querySelector("#emptyCart").classList.add("hidden"); // 隱藏空購物車樣式
-//   document.querySelector("#btnAmount").classList.add("grid"); // 顯示刪除按鈕及總金額
-//   document.querySelector("#btnAmount").classList.remove("hidden");
-//   cartContainer.classList.add("grid"); // 顯示購物車品項容器
-//   cartContainer.classList.remove("hidden");
-//   cartContainer.innerHTML = "";
-
-//   cartItem.map((item) => {
-//     const itemTotalAmount = item.quantity * item.price;
-//     cartContainer.innerHTML += `
-//     <ol class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center pb-5 mb-5 border-b border-gray-400 gap-y-3">
-//       <li class="col-span-full md:col-span-3 flex items-center gap-x-[15px] xl:gap-x-[30px]">
-//         <img src="${item.images}" class="w-20 h-20" alt="" />
-//         <p>${item.title}</p>
-//       </li>
-//       <li class="col-span-2">
-//         <span class="mr-2 md:hidden">單價</span>$${item.price}
-//       </li>
-//       <li class="xl:col-span-2 text-right md:text-left">
-//         <span class="mr-2 md:hidden">數量</span>${item.quantity}
-//       </li>
-//       <li class="hidden md:block xl:col-span-2">
-//         <span class="md:hidden">金額</span>$${itemTotalAmount}
-//       </li>
-//       <li>
-//         <span class="material-symbols-outlined flex items-center justify-end xl:justify-start">close</span>
-//       </li>
-//     </ol>
-//     <ol
-//       class="hidden grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center gap-y-[10px]"
-//       id="btnAmount"
-//     >
-//       <li class="col-span-full md:col-span-2">
-//         <button
-//           type="button"
-//           class="border border-black w-full h-12 rounded-[4px] hover:bg-black hover:text-white"
-//         >
-//           刪除所有品項
-//         </button>
-//       </li>
-//       <li class="md:col-start-6 xl:col-start-8 xl:text-left">總金額</li>
-//       <li
-//         class="col-span-3 md:col-span-2 xl:col-start-9 text-[28px] text-right md:text-left xl:text-right"
-//         id="totalAmount"
-//       ></li>
-//     </ol>
-//     `;
-//   });
-//   document.querySelector("#totalAmount").innerHTML = `$${totalAmount}`;
-// }
