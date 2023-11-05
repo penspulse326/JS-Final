@@ -13,7 +13,7 @@
     @apply duration-300 hover:text-secondary;
   }
 
-  table *{
+  table * {
     vertical-align: top;
   }
 
@@ -26,10 +26,15 @@
   .box {
     @apply max-w-[1110px];
   }
+  .transport-item{
+    @apply after:absolute after:top-[107%] after:right-[48.5%] after:border-[10px] after:border-black after:border-l-[10px] after:border-l-transparent after:border-r-[10px] after:border-r-transparent after:border-b-[10px] after:border-b-transparent md:after:top-[30%] md:after:right-[-47%] md:after:border-t-transparent md:after:border-l-black flex flex-col items-center relative;
+  }
 }
+
 .recommendation_wall::-webkit-scrollbar {
   display: none;
 }
+
 .recommendation_wall {
   overflow-x: scroll;
   -ms-overflow-style: none;
@@ -43,13 +48,3 @@
   cursor: -webkit-grabbing;
 }
 
-.transport-card::after {
-  position: absolute;
-  content: "";
-  top: 49px;
-  right: -60px;
-  border: 10px solid #000000;
-  border-top: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-}
