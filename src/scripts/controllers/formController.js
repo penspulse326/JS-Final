@@ -1,3 +1,5 @@
+import { cartData } from "./cartController.js";
+
 const apiPath = "finn";
 const baseUrl = "https://livejs-api.hexschool.io";
 
@@ -59,7 +61,6 @@ const constraints = {
 inputs.forEach((item) => {
   item.addEventListener("change", () => {
     item.nextElementSibling.textContent = "";
-    checkValue();
   });
 });
 
@@ -70,7 +71,8 @@ function checkValue() {
       document.querySelector(`#${keys}Hint`).textContent = "必填！";
     });
   }
-  if (!errors) {
+  // 送出按鈕設置
+  if (!errors && cartData.length > 0) {
     submitBtn.removeAttribute("disabled");
   } else {
     submitBtn.setAttribute("disabled", "true");
@@ -89,3 +91,5 @@ function submitSuccess() {
     confirmButtonText: "關閉",
   });
 }
+
+window.addEventListener("click", () => checkValue());

@@ -1,8 +1,5 @@
 import orderController from "./controllers/orderController.js";
-import {
-  init,
-  productSelectHandler,
-} from "./controllers/cartController.js";
+import { init, productSelectHandler } from "./controllers/cartController.js";
 import { getValue, apiPostOrder } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
@@ -51,6 +48,15 @@ if (productSelect) {
   productSelectHandler();
 }
 
+// 刪除購物車品項
+document.querySelector("#cartSection").addEventListener("click", (e) => {
+  if (e.target.id === "delectItem") {
+    delectProduct(e.target);
+  }
+  if (e.target.id === "delectAll") {
+    delectAllProduct();
+  }
+});
 
 // 監聽送出訂單按鈕
 document.querySelector("#submitBtn").addEventListener("click", () => {
