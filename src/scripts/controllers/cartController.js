@@ -61,7 +61,7 @@ function renderProductData(data) {
       (item) => `
     <li class="col-span-12 md:col-span-6 lg:col-span-3 relative">
       <div class="bg-black text-white text-xl w-[88px] py-2 text-center absolute top-3 -right-1">新品</div>
-      <img src="${item.images}" alt="${item.title}" class="w-full h-[302px]">
+      <img src="${item.images}" alt="${item.title}" class="w-full h-[302px] object-cover">
       <button type="button" class="addbtn bg-black text-white w-full text-center hover:bg-primary py-2 mb-2" data-id="${item.id}">加入購物車</button>
       <h3 class="text-xl mb-2">${item.title}</h3>
       <span class="text-xl line-through">NT$${money(item.origin_price)}</span>
