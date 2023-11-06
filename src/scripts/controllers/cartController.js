@@ -2,32 +2,32 @@ export const api_path = "jelly77";
 
 //建立baseURL
 const cartBase = axios.create({
-  baseURL: "https://livejs-api.hexschool.io/",
+  baseURL: "https://livejs-api.hexschool.io/api/livejs/v1/customer/",
 });
 
 //取得產品列表
 const apiProductList = () =>
-  cartBase.get(`api/livejs/v1/customer/${api_path}/products`);
+  cartBase.get(`${api_path}/products`);
 
 // 取得購物車列表
 const apiCartList = () =>
-  cartBase.get(`api/livejs/v1/customer/${api_path}/carts`);
+  cartBase.get(`${api_path}/carts`);
 
 // 加入購物車
 const apiaddCart = (data) =>
-  cartBase.post(`api/livejs/v1/customer/${api_path}/carts`, data);
+  cartBase.post(`${api_path}/carts`, data);
 
 // 刪除購物車內特定產品
 const apideleteCartItem = (id) =>
-  cartBase.delete(`api/livejs/v1/customer/${api_path}/carts/${id}`);
+  cartBase.delete(`${api_path}/carts/${id}`);
 
 // 清除購物車內全部產品
 const apideleteAllCart = () =>
-  cartBase.delete(`api/livejs/v1/customer/${api_path}/carts`);
+  cartBase.delete(`${api_path}/carts`);
 
 //編輯購物車產品數量
 const apieditCartNum = (data) =>
-  cartBase.patch(`api/livejs/v1/customer/${api_path}/carts`, data);
+  cartBase.patch(`${api_path}/carts`, data);
 
 const productList = document.querySelector(".productList"); //產品列表
 const productSelect = document.querySelector(".productSelect"); //產品篩選
@@ -70,10 +70,7 @@ function renderProductData(data) {
       <h3 class="text-xl mb-2">${item.title}</h3>
       <span class="text-xl line-through">NT$${money(item.origin_price)}</span>
       <p class="text-[28px]">NT$${money(item.price)}</p>
-    </li>
-  `
-    )
-    .join("");
+    </li>`).join("");
 }
 
 //productSelect 產品篩選
@@ -250,6 +247,7 @@ function renderCartList() {
     `
     )
     .join("");
+    removeBtnHandler()
 }
 
 //檢查購物車是否空的
@@ -338,6 +336,16 @@ function money(num) {
   let str = num.toString().split(".");
   return str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+//當商品數量等於一時，減號的按鈕鎖住
+function removeBtnHandler(){
+  document.querySelectorAll(".remove").forEach((item)=>{
+  if(!(item.dataset.num*1)){
+    item.parentElement.setAttribute("disabled", "true");
+  }
+})
+}
+
 
 cartList.addEventListener("click", cartHandler);
 productList.addEventListener("click", addCartItem);
