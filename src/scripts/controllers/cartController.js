@@ -73,32 +73,14 @@ function renderProductData(data) {
     </li>`).join("");
 }
 
-//productSelect 產品篩選
-export function productSelectHandler() {
-  productSelect.addEventListener("change", (e) => {
-    renderProductData(
-      product.filter((item) => {
-        if (e.target.value === item.category) {
-          return item;
-        }
-        if (e.target.value === "全部") {
-          return item;
-        }
-      })
-    );
-  });
-}
-
 // 取得購物車列表api
 export const getCartListApi = () => {
   apiCartList()
     .then((res) => {
       cartData = res.data.carts;
-      emptyCartblock();
+      emptyCartblock(); //檢查購物是否為空
       renderCartList();
-      document.querySelector("#totalAmount").textContent = `NT$${money(
-        res.data.finalTotal
-      )}`;
+      totalAmount(res.data.finalTotal);//顯示總金額
     })
     .catch((err) => {
       errorAlert(err);
@@ -217,11 +199,11 @@ function renderCartList() {
         <div class="w-20 h-20 flex-shrink-0">
           <img src="${
             item.product.images
-          }" class="w-full h-full object-cover" alt="" /></div>
+          }" class="w-full h-full object-cover" alt="${item.product.title}" /></div>
         <p class=>${item.product.title}</p>
       </li>
       <li class="col-span-2">
-        <span class="mr-2 md:hidden">單價</span>$${money(item.product.price)}
+        <span class="mr-2 md:hidden">單價</span>NT$${money(item.product.price)}
       </li>
       <li class="xl:col-span-2 text-right md:text-left">
         <button type="button"><i class="fa-solid fa-plus add" data-id="${
@@ -234,7 +216,7 @@ function renderCartList() {
 
       </li>
       <li class="hidden md:block xl:col-span-2">
-        <span class="md:hidden">金額</span>$${money(
+        <span class="md:hidden">金額</span>NT$${money(
           item.product.price * item.quantity
         )}
       </li>
@@ -284,7 +266,6 @@ function cartHandler(e) {
     e.target.className.includes("add") ||
     e.target.className.includes("remove")
   ) {
-    if (e.target.dataset.num === "0") return;
     disabledBtn(e.target.parentElement);
     editCartNumApi(e.target.dataset.id, e.target.dataset.num);
     setTimeout(() => {
@@ -294,6 +275,17 @@ function cartHandler(e) {
       });
     }, 1500);
   }
+}
+
+//productSelect 產品篩選
+export function productSelectHandler() {
+  productSelect.addEventListener("change", (e) => {
+    renderProductData(
+      product.filter((item) => {
+        return e.target.value === item.category? item : e.target.value ==="全部" && item;
+      })
+    );
+  });
 }
 
 //SweetAlert2
@@ -346,7 +338,11 @@ function removeBtnHandler(){
 })
 }
 
+//顯示總金額
+function totalAmount(total){
+  document.querySelector("#totalAmount").textContent = `NT$${money(total)}`;
+}
 
-cartList.addEventListener("click", cartHandler);
-productList.addEventListener("click", addCartItem);
-deleteAllBtn.addEventListener("click", deleteAllCartApi);
+productList.addEventListener("click", addCartItem);//產品列表監聽
+cartList.addEventListener("click", cartHandler);//購物車列表監聽
+deleteAllBtn.addEventListener("click", deleteAllCartApi);//刪除全部按鈕監聽
