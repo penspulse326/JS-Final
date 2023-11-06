@@ -93,7 +93,7 @@ export function productSelectHandler() {
 }
 
 // 取得購物車列表api
-const getCartListApi = () => {
+export const getCartListApi = () => {
   apiCartList()
     .then((res) => {
       cartData = res.data.carts;
@@ -215,16 +215,18 @@ function renderCartList() {
   cartList.innerHTML = cartData
     .map(
       (item) => `
-    <ol class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center pb-5 mb-5 border-b border-gray-400 gap-y-3">
-      <li class="col-span-full md:col-span-3 flex items-center gap-x-[15px] xl:gap-x-[30px]">
-        <img src="${item.product.images}" class="w-20 h-20" alt="" />
-        <p>${item.product.title}</p>
+      <ol class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-10 gap-x-[15px] xl:gap-x-[30px] items-center pb-5 mb-5 border-b border-gray-400 gap-y-3">
+      <li class="col-span-full md:col-span-3 flex items-center gap-x-[15px]">
+        <div class="w-20 h-20 flex-shrink-0">
+          <img src="${
+            item.product.images
+          }" class="w-full h-full object-cover" alt="" /></div>
+        <p class=>${item.product.title}</p>
       </li>
       <li class="col-span-2">
         <span class="mr-2 md:hidden">單價</span>$${money(item.product.price)}
       </li>
       <li class="xl:col-span-2 text-right md:text-left">
-        <span class="mr-2 md:hidden">數量</span>
         <button type="button"><i class="fa-solid fa-plus add" data-id="${
           item.id
         }" data-num="${item.quantity + 1}"></i></button>
@@ -251,7 +253,7 @@ function renderCartList() {
 }
 
 //檢查購物車是否空的
-function emptyCartblock() {
+export function emptyCartblock() {
   if (!cartData.length) {
     document.querySelector("#emptyCart").classList.remove("hidden");
     document.querySelector("#btnAmount").classList.add("hidden");
