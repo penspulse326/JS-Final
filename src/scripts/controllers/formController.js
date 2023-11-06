@@ -1,6 +1,6 @@
-import { cartData } from "./cartController.js";
+import { getCartListApi, cartData, emptyCartblock } from "./cartController.js";
 
-const apiPath = "finn";
+const apiPath = "jelly77";
 const baseUrl = "https://livejs-api.hexschool.io";
 
 const customerName = document.querySelector("#customerName");
@@ -31,6 +31,8 @@ export function apiPostOrder() {
     .post(`${baseUrl}/api/livejs/v1/customer/${apiPath}/orders`, submitData)
     .then((res) => {
       submitSuccess();
+      getCartListApi();
+      emptyCartblock();
     })
     .catch((err) => {
       console.log(err);
@@ -63,6 +65,13 @@ inputs.forEach((item) => {
     item.nextElementSibling.textContent = "";
   });
 });
+
+export function submitBtnHandler() {
+  document.querySelector("#submitBtn").addEventListener("click", () => {
+    getValue();
+    apiPostOrder();
+  });
+}
 
 function checkValue() {
   const errors = validate(form, constraints);

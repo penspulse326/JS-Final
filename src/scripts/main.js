@@ -1,6 +1,6 @@
 import orderController from "./controllers/orderController.js";
 import { init, productSelectHandler } from "./controllers/cartController.js";
-import { getValue, apiPostOrder } from "./controllers/formController.js";
+import { submitBtnHandler } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
@@ -58,11 +58,11 @@ document.querySelector("#cartSection").addEventListener("click", (e) => {
   }
 });
 
-// 監聽送出訂單按鈕
-document.querySelector("#submitBtn").addEventListener("click", () => {
-  getValue();
-  apiPostOrder();
-});
+// 送出訂單按鈕
+const submitBtn = document.querySelector("#submitBtn");
+if (submitBtn) {
+  submitBtnHandler();
+}
 
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");

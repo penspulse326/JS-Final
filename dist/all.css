@@ -826,6 +826,14 @@ th {
   margin-top: 2rem;
 }
 
+.mt-\[15px\]{
+  margin-top: 15px;
+}
+
+.mr-\[15px\]{
+  margin-right: 15px;
+}
+
 .flex{
   display: flex;
 }
@@ -866,6 +874,26 @@ th {
   height: 40px;
 }
 
+.h-full{
+  height: 100%;
+}
+
+.h-auto{
+  height: auto;
+}
+
+.h-10{
+  height: 2.5rem;
+}
+
+.h-\[80px\]{
+  height: 80px;
+}
+
+.max-h-20{
+  max-height: 5rem;
+}
+
 .w-20{
   width: 5rem;
 }
@@ -886,6 +914,18 @@ th {
   width: 100%;
 }
 
+.w-auto{
+  width: auto;
+}
+
+.w-\[80px\]{
+  width: 80px;
+}
+
+.w-1\/2{
+  width: 50%;
+}
+
 .min-w-\[350px\]{
   min-width: 350px;
 }
@@ -896,6 +936,10 @@ th {
 
 .max-w-\[500px\]{
   max-width: 500px;
+}
+
+.flex-shrink-0{
+  flex-shrink: 0;
 }
 
 .border-collapse{
@@ -1072,9 +1116,28 @@ th {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-red-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\'\$\{item\.product\.images\}\'\)\]{
+  background-image: url('${item.product.images}');
+}
+
+.object-contain{
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill{
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .px-1{
@@ -1187,6 +1250,10 @@ th {
 
 .pt-\[60px\]{
   padding-top: 60px;
+}
+
+.pt-\[15px\]{
+  padding-top: 15px;
 }
 
 .text-left{
@@ -1436,6 +1503,10 @@ th {
     display: none;
   }
 
+  .md\:max-w-\[160px\]{
+    max-width: 160px;
+  }
+
   .md\:grid-cols-8{
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
@@ -1483,6 +1554,10 @@ th {
 
   .lg\:mb-8{
     margin-bottom: 2rem;
+  }
+
+  .lg\:w-auto{
+    width: auto;
   }
 
   .lg\:pb-20{
