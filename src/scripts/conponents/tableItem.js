@@ -7,25 +7,25 @@ const TableItem = (item) => {
 
   return `
     <tr data-id=${item.id}>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${item.createdAt}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${item.user.name}<br />${item.user.tel}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${item.user.address}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${item.user.email}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${item.products.map((item) => `${item.title}<br/>`).join("")}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
         ${formattedDate}
     </td>
-    <td class="px-4 py-3 border border-black">
+    <td class="p-2 md:px-4 md:py-3 border border-black">
     <button class="btn-order-toggle text-[#0067CE] underline" type="button">
         ${item.paid ? "已處理" : "未處理"}
     </button>
