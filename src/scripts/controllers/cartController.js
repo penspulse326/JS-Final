@@ -6,28 +6,22 @@ const cartBase = axios.create({
 });
 
 //取得產品列表
-const apiProductList = () =>
-  cartBase.get(`${api_path}/products`);
+const apiProductList = () => cartBase.get(`${api_path}/products`);
 
 // 取得購物車列表
-const apiCartList = () =>
-  cartBase.get(`${api_path}/carts`);
+const apiCartList = () => cartBase.get(`${api_path}/carts`);
 
 // 加入購物車
-const apiaddCart = (data) =>
-  cartBase.post(`${api_path}/carts`, data);
+const apiaddCart = (data) => cartBase.post(`${api_path}/carts`, data);
 
 // 刪除購物車內特定產品
-const apideleteCartItem = (id) =>
-  cartBase.delete(`${api_path}/carts/${id}`);
+const apideleteCartItem = (id) => cartBase.delete(`${api_path}/carts/${id}`);
 
 // 清除購物車內全部產品
-const apideleteAllCart = () =>
-  cartBase.delete(`${api_path}/carts`);
+const apideleteAllCart = () => cartBase.delete(`${api_path}/carts`);
 
 //編輯購物車產品數量
-const apieditCartNum = (data) =>
-  cartBase.patch(`${api_path}/carts`, data);
+const apieditCartNum = (data) => cartBase.patch(`${api_path}/carts`, data);
 
 const productList = document.querySelector(".productList"); //產品列表
 const productSelect = document.querySelector(".productSelect"); //產品篩選
@@ -70,7 +64,9 @@ function renderProductData(data) {
       <h3 class="text-xl mb-2">${item.title}</h3>
       <span class="text-xl line-through">NT$${money(item.origin_price)}</span>
       <p class="text-[28px]">NT$${money(item.price)}</p>
-    </li>`).join("");
+    </li>`
+    )
+    .join("");
 }
 
 // 取得購物車列表api
@@ -80,7 +76,7 @@ export const getCartListApi = () => {
       cartData = res.data.carts;
       emptyCartblock(); //檢查購物是否為空
       renderCartList();
-      totalAmount(res.data.finalTotal);//顯示總金額
+      totalAmount(res.data.finalTotal); //顯示總金額
     })
     .catch((err) => {
       errorAlert(err);
@@ -199,7 +195,9 @@ function renderCartList() {
         <div class="w-20 h-20 flex-shrink-0">
           <img src="${
             item.product.images
-          }" class="w-full h-full object-cover" alt="${item.product.title}" /></div>
+          }" class="w-full h-full object-cover" alt="${
+        item.product.title
+      }" /></div>
         <p class=>${item.product.title}</p>
       </li>
       <li class="col-span-2">
@@ -229,7 +227,7 @@ function renderCartList() {
     `
     )
     .join("");
-    removeBtnHandler()
+  removeBtnHandler();
 }
 
 //檢查購物車是否空的
@@ -282,7 +280,9 @@ export function productSelectHandler() {
   productSelect.addEventListener("change", (e) => {
     renderProductData(
       product.filter((item) => {
-        return e.target.value === item.category? item : e.target.value ==="全部" && item;
+        return e.target.value === item.category
+          ? item
+          : e.target.value === "全部" && item;
       })
     );
   });
@@ -330,19 +330,19 @@ function money(num) {
 }
 
 //當商品數量等於一時，減號的按鈕鎖住
-function removeBtnHandler(){
-  document.querySelectorAll(".remove").forEach((item)=>{
-  if(!(item.dataset.num*1)){
-    item.parentElement.setAttribute("disabled", "true");
-  }
-})
+function removeBtnHandler() {
+  document.querySelectorAll(".remove").forEach((item) => {
+    if (!(item.dataset.num * 1)) {
+      item.parentElement.setAttribute("disabled", "true");
+    }
+  });
 }
 
 //顯示總金額
-function totalAmount(total){
+function totalAmount(total) {
   document.querySelector("#totalAmount").textContent = `NT$${money(total)}`;
 }
 
-productList.addEventListener("click", addCartItem);//產品列表監聽
-cartList.addEventListener("click", cartHandler);//購物車列表監聽
-deleteAllBtn.addEventListener("click", deleteAllCartApi);//刪除全部按鈕監聽
+if (productList) productList.addEventListener("click", addCartItem); //產品列表監聽
+if (cartList) cartList.addEventListener("click", cartHandler); //購物車列表監聽
+if (deleteAllBtn) deleteAllBtn.addEventListener("click", deleteAllCartApi); //刪除全部按鈕監聽

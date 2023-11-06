@@ -49,14 +49,17 @@ if (productSelect) {
 }
 
 // 刪除購物車品項
-document.querySelector("#cartSection").addEventListener("click", (e) => {
-  if (e.target.id === "delectItem") {
-    delectProduct(e.target);
-  }
-  if (e.target.id === "delectAll") {
-    delectAllProduct();
-  }
-});
+const cartSection = document.querySelector("#cartSection");
+if (cartSection) {
+  cartSection.addEventListener("click", (e) => {
+    if (e.target.id === "delectItem") {
+      delectProduct(e.target);
+    }
+    if (e.target.id === "delectAll") {
+      delectAllProduct();
+    }
+  });
+}
 
 // 送出訂單按鈕
 const submitBtn = document.querySelector("#submitBtn");
