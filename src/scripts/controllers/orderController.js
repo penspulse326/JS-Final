@@ -1,24 +1,27 @@
-import TableItem from "../conponents/tableItem.js";
+import { TableItem, tableTitleHTML } from "../conponents/tableItem.js";
 
 const apiPath = "shin";
 
 class orderController {
   constructor() {
+    // 事件元素
     this.btnLogin = document.querySelector(".btn-login");
-    this.tableElement = document.querySelector(".table-order");
     this.btnClear = document.querySelector(".btn-clearOrders");
     this.btnBack = document.querySelector(".btn-chartBack");
+    this.tableElement = document.querySelector(".table-order");
+
+    this.btnLogin?.addEventListener("click", () => this.orderInit());
+    this.btnClear?.addEventListener("click", () => this.checkClearBtn());
+    this.tableElement?.addEventListener("click", (e) =>
+      this.checkTableClick(e)
+    );
+
+    // 表格與提示區塊
     this.hintNotLogin = document.querySelector(".section-not-login");
     this.order = document.querySelector(".section-order");
     this.orderList = document.querySelector(".order-list");
     this.orderEmpty = document.querySelector(".order-empty");
     this.orderData = [];
-
-    this.btnLogin?.addEventListener("click", () => this.orderInit());
-    this.tableElement?.addEventListener("click", (e) =>
-      this.checkTableClick(e)
-    );
-    this.btnClear?.addEventListener("click", () => this.checkClearBtn());
   }
   // 渲染表格
   renderTable() {
@@ -143,16 +146,22 @@ class orderController {
         Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error")
       );
   }
-  // 顯示圖表
-  showChart() {
-    const { categoryData, subData } = this.transformOrderData(this.orderData);
+  // 生成圖表
+  createChart(rawData, chartName, event = null) {
+    const data = Object.entries(rawData);
+    const mainColors = chartName === "category" && {
+      pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
+    };
+    const subColors = chartName === "sub" && {
+      pattern: ["#301E5F", "#5434A7", "#9D7FEA", "#DACBFF"],
+    };
 
-    let chart = c3.generate({
+    return c3.generate({
       bindto: "#chart",
       data: {
         type: "pie",
-        columns: Object.entries(categoryData),
-        onclick: (d) => showSubData(d.id),
+        columns: data,
+        onclick: event,
       },
       size: {
         width: 350,
@@ -161,55 +170,24 @@ class orderController {
       padding: {
         bottom: 32,
       },
-      color: {
-        pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
-      },
+      color: mainColors || subColors,
     });
-
+  }
+  // 顯示圖表
+  showChart() {
+    const { categoryData, subData } = this.transformOrderData(this.orderData);
     const showSubData = (id) => {
-      chart.destroy();
-      chart = c3.generate({
-        bindto: "#chart",
-        data: {
-          type: "pie",
-          columns: Object.entries(subData[id]),
-        },
-        size: {
-          width: 350,
-          height: 350,
-        },
-        padding: {
-          bottom: 32,
-        },
-        color: {
-          pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
-        },
-      });
+      this.createChart(subData[id], "sub");
 
       this.btnBack.classList.remove("hidden");
+
       this.btnBack.addEventListener("click", () => {
         this.btnBack.classList.add("hidden");
-        chart.destroy();
-        chart = c3.generate({
-          bindto: "#chart",
-          data: {
-            type: "pie",
-            columns: Object.entries(categoryData),
-            onclick: (d) => showSubData(d.id),
-          },
-          size: {
-            width: 350,
-            height: 350,
-          },
-          padding: {
-            bottom: 32,
-          },
-          color: {
-            pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],
-          },
-        });
+        this.createChart(categoryData, "category", (d) => showSubData(d.id));
       });
     };
+
+    this.createChart(categoryData, "category", (d) => showSubData(d.id));
   }
   // 資料轉換
   transformOrderData(data) {
@@ -241,33 +219,5 @@ class orderController {
     return { categoryData, subData };
   }
 }
-
-const tableTitleHTML = `
-  <tr>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-      訂單編號
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        聯絡人
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        聯絡地址
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        電子郵件
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        訂單品項
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        訂單日期
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        訂單狀態
-    </th>
-    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
-        操作
-    </th>
-  </tr>`;
 
 export default orderController;

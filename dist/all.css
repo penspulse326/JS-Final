@@ -1099,11 +1099,6 @@ th {
   padding-right: 0.75rem;
 }
 
-.px-4{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1600,6 +1595,10 @@ th {
 
   .xl\:mt-\[60px\]{
     margin-top: 60px;
+  }
+
+  .xl\:mt-24{
+    margin-top: 6rem;
   }
 
   .xl\:h-\[420px\]{
