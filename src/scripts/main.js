@@ -1,6 +1,6 @@
 import orderController from "./controllers/orderController.js";
 import { init, productSelectHandler } from "./controllers/cartController.js";
-import { getValue, apiPostOrder } from "./controllers/formController.js";
+import { submitBtnHandler } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
@@ -36,7 +36,7 @@ if (list) {
   list.addEventListener("mouseleave", stopDrag);
 }
 
-//產品列表區
+//產品列表區及購物車列表區
 const productList = document.querySelector(".productList");
 if (productList) {
   init();
@@ -48,11 +48,24 @@ if (productSelect) {
   productSelectHandler();
 }
 
-// 監聽送出訂單按鈕
-// document.querySelector("#submitBtn").addEventListener("click", () => {
-//   getValue();
-//   apiPostOrder();
-// });
+// 刪除購物車品項
+const cartSection = document.querySelector("#cartSection");
+if (cartSection) {
+  cartSection.addEventListener("click", (e) => {
+    if (e.target.id === "delectItem") {
+      delectProduct(e.target);
+    }
+    if (e.target.id === "delectAll") {
+      delectAllProduct();
+    }
+  });
+}
+
+// 送出訂單按鈕
+const submitBtn = document.querySelector("#submitBtn");
+if (submitBtn) {
+  submitBtnHandler();
+}
 
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");

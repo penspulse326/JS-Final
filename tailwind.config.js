@@ -33,7 +33,7 @@ module.exports = {
             maxWidth: "100%",
           },
           "@screen lg": {
-            maxWidth: "1110px",
+            maxWidth: "1134px",
           },
         },
       });

@@ -1,4 +1,6 @@
-const apiPath = "finn";
+import { getCartListApi, cartData, emptyCartblock } from "./cartController.js";
+
+const apiPath = "jelly77";
 const baseUrl = "https://livejs-api.hexschool.io";
 
 const customerName = document.querySelector("#customerName");
@@ -29,6 +31,8 @@ export function apiPostOrder() {
     .post(`${baseUrl}/api/livejs/v1/customer/${apiPath}/orders`, submitData)
     .then((res) => {
       submitSuccess();
+      getCartListApi();
+      emptyCartblock();
     })
     .catch((err) => {
       console.log(err);
@@ -59,9 +63,15 @@ const constraints = {
 inputs.forEach((item) => {
   item.addEventListener("change", () => {
     item.nextElementSibling.textContent = "";
-    checkValue();
   });
 });
+
+export function submitBtnHandler() {
+  document.querySelector("#submitBtn").addEventListener("click", () => {
+    getValue();
+    apiPostOrder();
+  });
+}
 
 function checkValue() {
   const errors = validate(form, constraints);
@@ -70,7 +80,8 @@ function checkValue() {
       document.querySelector(`#${keys}Hint`).textContent = "必填！";
     });
   }
-  if (!errors) {
+  // 送出按鈕設置
+  if (!errors && cartData.length > 0) {
     submitBtn.removeAttribute("disabled");
   } else {
     submitBtn.setAttribute("disabled", "true");
@@ -89,3 +100,5 @@ function submitSuccess() {
     confirmButtonText: "關閉",
   });
 }
+
+window.addEventListener("click", () => checkValue());
