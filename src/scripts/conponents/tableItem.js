@@ -1,4 +1,4 @@
-const TableItem = (item) => {
+export const TableItem = (item) => {
   const date = new Date(item.createdAt * 1000);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -41,4 +41,30 @@ const TableItem = (item) => {
     </tr>`;
 };
 
-export default TableItem;
+export const tableTitleHTML = `
+  <tr>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+      訂單編號
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        聯絡人
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        聯絡地址
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        電子郵件
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        訂單品項
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        訂單日期
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        訂單狀態
+    </th>
+    <th class="p-2 md:px-4 md:py-3 border border-black whitespace-nowrap">
+        操作
+    </th>
+  </tr>`;
