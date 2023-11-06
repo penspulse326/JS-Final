@@ -49,10 +49,10 @@ if (productSelect) {
 }
 
 // 監聽送出訂單按鈕
-document.querySelector("#submitBtn").addEventListener("click", () => {
-  getValue();
-  apiPostOrder();
-});
+// document.querySelector("#submitBtn").addEventListener("click", () => {
+//   getValue();
+//   apiPostOrder();
+// });
 
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");
