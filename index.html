@@ -31,21 +31,26 @@
         <div
           class="flex flex-col md:flex-row justify-between items-center py-6 xl:py-9"
         >
-          <a href="#"
+          <a href="./"
             ><h1 class="text-lg xl:text-2xl font-bold">WOWOROOM</h1></a
           >
           <ul
             class="flex gap-4 md:gap-6 xl:gap-12 mt-4 md:m-0 text-sm xl:text-base"
+            id="links"
           >
-            <li><a href="#">床墊優勢</a></li>
-            <li><a href="#">好評推薦</a></li>
-            <li><a href="#">運送方式</a></li>
-            <li><a href="#">立即預訂</a></li>
+            <li><a href="#" id="link-advantage">床墊優勢</a></li>
+            <li><a href="#" id="link-comments">好評推薦</a></li>
+            <li><a href="#" id="link-transport">運送方式</a></li>
+            <li><a href="#" id="link-purchase">立即預訂</a></li>
+            <li>
+              <a href="../dashboard.html" id="link-dashboard">後台管理</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
     <main>
+      <!-- banner -->
       <section class="pb-10 md:pt-4 xl:pt-8 xl:pb-[60px]">
         <div
           class="box grid grid-cols-4 xl:grid-cols-12 xl:gap-x-[30px] mx-auto px-3 md:px-8 xl:px-0"
@@ -71,6 +76,7 @@
           </h2>
           <h3
             class="col-span-2 col-start-2 xl:col-start-6 mt-8 xl:mt-[60px] text-[28px] text-center"
+            id="advantage"
           >
             床墊優勢
           </h3>
@@ -110,8 +116,11 @@
           </ul>
         </div>
       </section>
-
-      <section class="pt-4 pb-6 xl:pt-12 xl:pb-16 bg-[#F8F8F8]">
+      <!-- comparation -->
+      <section
+        class="pt-4 pb-6 xl:pt-12 xl:pb-16 bg-[#F8F8F8]"
+        id="comparation"
+      >
         <div
           class="box mx-auto grid grid-cols-4 xl:grid-cols-12 gap-x-6 xl:gap-x-[30px] px-3 md:px-8 xl:px-0"
         >
@@ -234,7 +243,8 @@
           </ul>
         </div>
       </section>
-      <section class="bg-[#301E5F] py-10 lg:pt-[60px] lg:pb-20">
+      <!-- comment -->
+      <section class="bg-[#301E5F] py-10 lg:pt-[60px] lg:pb-20" id="comments">
         <div class="container">
           <h2
             class="text-center text-[28px] leading-[38px] text-white mb-4 lg:mb-8"
@@ -242,7 +252,9 @@
             好評推薦
           </h2>
           <div class="recommendation_wall cursor-grab">
-            <ul class="flex gap-[30px] ml-[95px] mb-5 w-full [&>li]:bg-white [&>li]:min-w-[300px] [&>li]:flex h-[80px] lg:h-full lg:[&>li]:min-w-[350px]">
+            <ul
+              class="flex gap-[30px] ml-[95px] mb-5 w-full [&>li]:bg-white [&>li]:min-w-[300px] [&>li]:flex h-[80px] lg:h-full lg:[&>li]:min-w-[350px]"
+            >
               <li>
                 <img
                   src="https://raw.githubusercontent.com/hexschool/js-training/c5ec4418eeffa111eb4c0f5352c5190643294d92/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/cXcOLhu.png"
@@ -355,7 +367,9 @@
                 </div>
               </li>
             </ul>
-            <ul class="flex gap-[30px] w-full [&>li]:bg-white [&>li]:min-w-[300px] [&>li]:flex h-[80px] lg:h-full lg:[&>li]:min-w-[350px]">
+            <ul
+              class="flex gap-[30px] w-full [&>li]:bg-white [&>li]:min-w-[300px] [&>li]:flex h-[80px] lg:h-full lg:[&>li]:min-w-[350px]"
+            >
               <li>
                 <img
                   src="https://raw.githubusercontent.com/hexschool/js-training/c5ec4418eeffa111eb4c0f5352c5190643294d92/%E7%AC%AC%E4%B9%9D%E9%80%B1%E4%B8%BB%E7%B7%9A%E4%BB%BB%E5%8B%99%E5%9C%96%E5%BA%AB/oJb4G1d.png"
@@ -465,7 +479,8 @@
           </div>
         </div>
       </section>
-      <section class="container py-4 lg:pt-8 lg:pb-[72px]">
+      <!-- transport -->
+      <section class="ontainer py-4 lg:pt-8 lg:pb-[72px]" id="transport">
         <h2 class="text-center text-[28px] leading-[38px] mb-4 lg:mb-8">
           運送方式
         </h2>
@@ -510,7 +525,8 @@
           </li>
         </ul>
       </section>
-      <section class="pb-[60px]">
+      <!-- products -->
+      <section class="pb-[60px]" id="purchase">
         <div class="container">
           <div class="grid grid-cols-12 gap-x-[30px]">
             <select

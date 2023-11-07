@@ -75,15 +75,44 @@ class orderController {
   }
   // 初始化
   orderInit() {
-    const password = prompt("請輸入 UID");
-    if (!password || password !== "我是穎旻粉絲") return;
+    Swal.fire({
+      title: "請輸入通關密語",
+      input: "text",
+      showCancelButton: true,
+      confirmButtonText: "確認",
+      cancelButtonText: "取消",
+    }).then((result) => {
+      if (result.isConfirmed && this.checkPassword(result.value)) {
+        axios.defaults.headers.common["Authorization"] =
+          "97NYtTEy4GNDBv5W3taaYDYt2ff1";
 
-    axios.defaults.headers.common["Authorization"] =
-      "97NYtTEy4GNDBv5W3taaYDYt2ff1";
-
-    this.getOrder();
-    this.hintNotLogin.classList.add("hidden");
-    this.order.classList.remove("hidden");
+        this.getOrder();
+        this.hintNotLogin.classList.add("hidden");
+        this.order.classList.remove("hidden");
+      }
+    });
+  }
+  // 判斷密碼是否合法
+  checkPassword(password) {
+    if (!password || password !== "我是穎旻粉絲") {
+      Swal.fire({
+        icon: "error",
+        title: "輸入錯誤！",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 2000,
+      });
+      return false;
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "嗨嗨粉絲！^O^",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 2000,
+      });
+      return true;
+    }
   }
   // 監聽 table 點擊
   checkTableClick(e) {
