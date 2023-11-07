@@ -87,6 +87,5 @@ if (submitBtn) {
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");
 if (dashboard) {
-  ("97NYtTEy4GNDBv5W3taaYDYt2ff1");
   const orderManager = new orderController();
 }
