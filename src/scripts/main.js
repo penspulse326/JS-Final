@@ -2,10 +2,8 @@ import orderController from "./controllers/orderController.js";
 import { init, productSelectHandler } from "./controllers/cartController.js";
 import { submitBtnHandler } from "./controllers/formController.js";
 
-axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
-
 // 導覽列快速定位
-const navScrollTo = () => {
+(() => {
   const links = document.querySelector("#links");
 
   links?.addEventListener("click", (e) => {
@@ -19,8 +17,7 @@ const navScrollTo = () => {
       window.scrollBy(0, -150);
     }
   });
-};
-navScrollTo();
+})();
 
 // 好評推薦區塊 拖曳功能
 const list = document.querySelector(".recommendation_wall");
@@ -87,6 +84,5 @@ if (submitBtn) {
 // 後台管理區塊
 const dashboard = document.querySelector(".dashboard");
 if (dashboard) {
-  ("97NYtTEy4GNDBv5W3taaYDYt2ff1");
-  const orderManager = new orderController();
+  new orderController();
 }

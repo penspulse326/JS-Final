@@ -1,8 +1,8 @@
-const apiPath = "rocket14";
+const apiPath = process.env.API_PATH;
 
 //建立baseURL
 const cartBase = axios.create({
-  baseURL: "https://livejs-api.hexschool.io/api/livejs/v1/customer/",
+  baseURL: `${process.env.API_BASE}/customer/`,
 });
 
 //取得產品列表

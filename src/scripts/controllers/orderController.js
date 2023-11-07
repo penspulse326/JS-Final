@@ -1,6 +1,7 @@
 import { TableItem, tableTitleHTML } from "../conponents/tableItem.js";
 
-const apiPath = "rocket14";
+const apiPath = process.env.API_PATH;
+const baseUrl = `${process.env.API_BASE}/admin/${apiPath}/orders`;
 
 class orderController {
   constructor() {
@@ -59,7 +60,7 @@ class orderController {
   getOrder() {
     this.showLoading();
     axios
-      .get(`/admin/${apiPath}/orders`)
+      .get(baseUrl)
       .then((res) => {
         if (res.data.status) {
           this.orderData = res.data.orders;
@@ -68,9 +69,11 @@ class orderController {
           return;
         }
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
+        this.disableLoading();
       })
       .catch(() => {
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
+        this.disableLoading();
       });
   }
   // 初始化
@@ -148,7 +151,7 @@ class orderController {
     const reqData = { data: { id, paid: !status } };
 
     axios
-      .put(`/admin/${apiPath}/orders`, reqData)
+      .put(baseUrl, reqData)
       .then((res) => {
         if (res.status === 200) {
           this.orderData = res.data.orders;
@@ -163,17 +166,19 @@ class orderController {
           return;
         }
         Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
       })
-      .catch(() =>
-        Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error")
-      );
+      .catch(() => {
+        Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
+      });
   }
   // 請求刪除單個訂單
   deleteOrder(id) {
     this.showLoading();
 
     axios
-      .delete(`/admin/${apiPath}/orders/${id}`)
+      .delete(`${baseUrl}/${id}`)
       .then((res) => {
         if (res.status === 200) {
           this.orderData = res.data.orders;
@@ -188,10 +193,12 @@ class orderController {
           return;
         }
         Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
       })
-      .catch(() =>
-        Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error")
-      );
+      .catch(() => {
+        Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
+      });
   }
   // 監聽清除按鈕
   checkClearBtn() {
@@ -214,17 +221,21 @@ class orderController {
   // 請求清除全部訂單
   clearOrder() {
     axios
-      .delete(`/admin/${apiPath}/orders`)
+      .delete(baseUrl)
       .then((res) => {
         if (res.data.status) {
           Swal.fire("刪除成功!", res.data.message, "success");
           this.orderData = res.data.orders;
           this.renderTable();
+          return;
         }
+        Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
       })
-      .catch(() =>
-        Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error")
-      );
+      .catch(() => {
+        Swal.fire("清除失敗", "清除全部訂單時發生失敗，請稍後再試 QQ", "error");
+        this.disableLoading();
+      });
   }
   // 生成圖表
   createChart(rawData, chartName, event = () => {}) {

@@ -1,7 +1,7 @@
 import { getCartListApi, cartData, emptyCartblock } from "./cartController.js";
 
-const apiPath = "rocket14";
-const baseUrl = "https://livejs-api.hexschool.io";
+const apiPath = process.env.API_PATH;
+const baseUrl = process.env.API_BASE;
 
 const customerName = document.querySelector("#customerName");
 const phone = document.querySelector("#phone");
@@ -28,7 +28,7 @@ export function getValue() {
 // 送出訂單API
 export function apiPostOrder() {
   axios
-    .post(`${baseUrl}/api/livejs/v1/customer/${apiPath}/orders`, submitData)
+    .post(`${baseUrl}/customer/${apiPath}/orders`, submitData)
     .then((res) => {
       submitSuccess();
       getCartListApi();
