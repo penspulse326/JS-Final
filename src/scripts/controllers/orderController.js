@@ -17,11 +17,25 @@ class orderController {
     );
 
     // 表格與提示區塊
+    this.loading = document.querySelector(".loading");
+    this.dashboard = document.querySelector(".dashboard");
     this.hintNotLogin = document.querySelector(".section-not-login");
     this.order = document.querySelector(".section-order");
     this.orderList = document.querySelector(".order-list");
     this.orderEmpty = document.querySelector(".order-empty");
     this.orderData = [];
+  }
+  // 顯示讀取動畫
+  showLoading() {
+    this.loading.classList.remove("hidden");
+    this.loading.classList.add("flex");
+    this.dashboard.classList.add("blur-sm");
+  }
+  // 關閉讀取動畫
+  disableLoading() {
+    this.loading.classList.remove("flex");
+    this.loading.classList.add("hidden");
+    this.dashboard.classList.remove("blur-sm");
   }
   // 渲染表格
   renderTable() {
@@ -43,12 +57,14 @@ class orderController {
   }
   // 請求訂單列表
   getOrder() {
+    this.showLoading();
     axios
       .get(`/admin/${apiPath}/orders`)
       .then((res) => {
         if (res.data.status) {
           this.orderData = res.data.orders;
           this.renderTable();
+          this.disableLoading();
           return;
         }
         Swal.fire("讀取失敗", "讀取訂單時發生錯誤，請稍後再試 QQ", "error");
@@ -75,10 +91,24 @@ class orderController {
     const id = e.target.closest("tr").getAttribute("data-id");
 
     if (isBtnToggle) this.putOrderPaidStatus(id, e.target.textContent);
-    if (isBtnDelete) this.deleteOrder(id);
+    if (isBtnDelete) {
+      Swal.fire({
+        title: "注意",
+        text: "確定要刪除此筆訂單嗎 OAO？",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonText: "取消",
+        confirmButtonText: "確定刪除",
+      }).then((result) => {
+        if (result.isConfirmed) this.deleteOrder(id);
+        return;
+      });
+    }
   }
   // 請求更改付款狀態
   putOrderPaidStatus(id, statusText) {
+    this.showLoading();
     const text = statusText.trim();
     let status = false;
 
@@ -93,7 +123,16 @@ class orderController {
         if (res.status === 200) {
           this.orderData = res.data.orders;
           this.renderTable();
+          this.disableLoading();
+          Swal.fire({
+            icon: "success",
+            title: `更改成功`,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          return;
         }
+        Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error");
       })
       .catch(() =>
         Swal.fire("更改失敗", "更改訂單時發生失敗，請稍後再試 QQ", "error")
@@ -101,13 +140,24 @@ class orderController {
   }
   // 請求刪除單個訂單
   deleteOrder(id) {
+    this.showLoading();
+
     axios
       .delete(`/admin/${apiPath}/orders/${id}`)
       .then((res) => {
         if (res.status === 200) {
           this.orderData = res.data.orders;
           this.renderTable();
+          this.disableLoading();
+          Swal.fire({
+            icon: "success",
+            title: `刪除成功`,
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          return;
         }
+        Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error");
       })
       .catch(() =>
         Swal.fire("刪除失敗", "刪除訂單時發生失敗，請稍後再試 QQ", "error")
@@ -147,7 +197,7 @@ class orderController {
       );
   }
   // 生成圖表
-  createChart(rawData, chartName, event = null) {
+  createChart(rawData, chartName, event = () => {}) {
     const data = Object.entries(rawData);
     const mainColors = chartName === "category" && {
       pattern: ["#5434A7", "#9D7FEA", "#DACBFF"],

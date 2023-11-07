@@ -343,6 +343,6 @@ function totalAmount(total) {
   document.querySelector("#totalAmount").textContent = `NT$${money(total)}`;
 }
 
-productList.addEventListener("click", addCartItem); //產品列表監聽
-cartList.addEventListener("click", cartHandler); //購物車列表監聽
-deleteAllBtn.addEventListener("click", deleteAllCartApi); //刪除全部按鈕監聽
+productList?.addEventListener("click", addCartItem); //產品列表監聽
+cartList?.addEventListener("click", cartHandler); //購物車列表監聽
+deleteAllBtn?.addEventListener("click", deleteAllCartApi); //刪除全部按鈕監聽

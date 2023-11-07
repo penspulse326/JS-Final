@@ -3,7 +3,6 @@ import { init, productSelectHandler } from "./controllers/cartController.js";
 import { submitBtnHandler } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
-axios.defaults.headers.common["Authorization"] = "97NYtTEy4GNDBv5W3taaYDYt2ff1";
 
 // 好評推薦區塊 拖曳功能
 const list = document.querySelector(".recommendation_wall");

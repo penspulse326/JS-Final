@@ -17,27 +17,27 @@
     <script type="module" src="./src/scripts/main.js" defer></script>
   </head>
   <body>
-    <!-- navbar -->
-    <nav
-      class="sticky top-0 z-50 shadow-md xl:shadow-none xl:border-b-[40px] border-black bg-white"
-    >
-      <div class="box mx-auto px-3 md:px-8 xl:px-0">
-        <div
-          class="flex flex-col md:flex-row justify-between items-center py-6 xl:py-9"
-        >
-          <a href="#"
-            ><h1 class="text-lg xl:text-2xl font-bold">WOWOROOM</h1></a
-          >
-          <ul
-            class="flex gap-4 md:gap-6 xl:gap-12 mt-4 md:m-0 text-sm xl:text-base"
-          >
-            <li><a href="#">後台管理</a></li>
-            <li><a class="btn-login" href="#">管理員登入</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <main class="dashboard">
+      <!-- navbar -->
+      <nav
+        class="sticky top-0 z-50 shadow-md xl:shadow-none xl:border-b-[40px] border-black bg-white"
+      >
+        <div class="box mx-auto px-3 md:px-8 xl:px-0">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center py-6 xl:py-9"
+          >
+            <a href="#"
+              ><h1 class="text-lg xl:text-2xl font-bold">WOWOROOM</h1></a
+            >
+            <ul
+              class="flex gap-4 md:gap-6 xl:gap-12 mt-4 md:m-0 text-sm xl:text-base"
+            >
+              <li><a href="#">後台管理</a></li>
+              <li><a class="btn-login" href="#">管理員登入</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <section class="section-order hidden py-10 xl:pt-[60px] xl:pb-[108px]">
         <div class="box mx-auto px-3 md:px-8 xl:px-0">
           <div class="order-list hidden">
@@ -62,7 +62,7 @@
             </div>
             <div class="grid grid-cols-4 xl:grid-cols-12 gap-x-[30px]">
               <button
-                class="btn-clearOrders col-span-2 col-start-3 xl:col-start-11 order-2 xl:order-[0] mt-4 xl:mt-12 ml-8 xl:ml-0 p-2 xl:px-5 xl:py-[10px] border border-black rounded-[4px] text-sm xl:text-xl whitespace-nowrap hover:text-white hover:bg-black duration-300"
+                class="btn-clearOrders col-span-2 md:col-span-1 xl:col-span-2 col-start-3 md:col-start-4 xl:col-start-11 order-2 xl:order-[0] mt-4 xl:mt-12 ml-8 md:ml-0 p-2 xl:px-5 xl:py-[10px] border border-black rounded-[4px] text-sm xl:text-xl whitespace-nowrap hover:text-white hover:bg-black duration-300"
               >
                 清除全部訂單
               </button>
@@ -99,5 +99,10 @@
         </div>
       </section>
     </main>
+    <div
+      class="loading hidden fixed z-50 top-0 left-0 justify-center items-center w-[100%] h-[100%] bg-[rgba(55,65,81,0.5)]"
+    >
+      <span class="loader"></span>
+    </div>
   </body>
 </html>
