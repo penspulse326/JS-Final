@@ -1,4 +1,4 @@
-export const api_path = "jelly77";
+const apiPath = "rocket14";
 
 //建立baseURL
 const cartBase = axios.create({
@@ -6,22 +6,22 @@ const cartBase = axios.create({
 });
 
 //取得產品列表
-const apiProductList = () => cartBase.get(`${api_path}/products`);
+const apiProductList = () => cartBase.get(`${apiPath}/products`);
 
 // 取得購物車列表
-const apiCartList = () => cartBase.get(`${api_path}/carts`);
+const apiCartList = () => cartBase.get(`${apiPath}/carts`);
 
 // 加入購物車
-const apiaddCart = (data) => cartBase.post(`${api_path}/carts`, data);
+const apiaddCart = (data) => cartBase.post(`${apiPath}/carts`, data);
 
 // 刪除購物車內特定產品
-const apideleteCartItem = (id) => cartBase.delete(`${api_path}/carts/${id}`);
+const apideleteCartItem = (id) => cartBase.delete(`${apiPath}/carts/${id}`);
 
 // 清除購物車內全部產品
-const apideleteAllCart = () => cartBase.delete(`${api_path}/carts`);
+const apideleteAllCart = () => cartBase.delete(`${apiPath}/carts`);
 
 //編輯購物車產品數量
-const apieditCartNum = (data) => cartBase.patch(`${api_path}/carts`, data);
+const apieditCartNum = (data) => cartBase.patch(`${apiPath}/carts`, data);
 
 const productList = document.querySelector(".productList"); //產品列表
 const productSelect = document.querySelector(".productSelect"); //產品篩選

@@ -1,6 +1,6 @@
 import { getCartListApi, cartData, emptyCartblock } from "./cartController.js";
 
-const apiPath = "jelly77";
+const apiPath = "rocket14";
 const baseUrl = "https://livejs-api.hexschool.io";
 
 const customerName = document.querySelector("#customerName");

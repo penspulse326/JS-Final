@@ -1,6 +1,6 @@
 import { TableItem, tableTitleHTML } from "../conponents/tableItem.js";
 
-const apiPath = "shin";
+const apiPath = "rocket14";
 
 class orderController {
   constructor() {
@@ -75,12 +75,13 @@ class orderController {
   }
   // 初始化
   orderInit() {
-    const uid = prompt("請輸入 UID", "97NYtTEy4GNDBv5W3taaYDYt2ff1");
-    if (!uid) return;
+    const password = prompt("請輸入 UID");
+    if (!password || password !== "我是穎旻粉絲") return;
 
-    axios.defaults.headers.common["Authorization"] = uid;
+    axios.defaults.headers.common["Authorization"] =
+      "97NYtTEy4GNDBv5W3taaYDYt2ff1";
+
     this.getOrder();
-
     this.hintNotLogin.classList.add("hidden");
     this.order.classList.remove("hidden");
   }
