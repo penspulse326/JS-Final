@@ -4,6 +4,24 @@ import { submitBtnHandler } from "./controllers/formController.js";
 
 axios.defaults.baseURL = "https://livejs-api.hexschool.io/api/livejs/v1";
 
+// 導覽列快速定位
+const navScrollTo = () => {
+  const links = document.querySelector("#links");
+
+  links?.addEventListener("click", (e) => {
+    if (e.target.id !== "link-dashboard") e.preventDefault();
+
+    const id = e.target.id;
+    const target = document.querySelector(id.replace("link-", "#"));
+
+    if (target) {
+      target.scrollIntoView({ block: "start" });
+      window.scrollBy(0, -150);
+    }
+  });
+};
+navScrollTo();
+
 // 好評推薦區塊 拖曳功能
 const list = document.querySelector(".recommendation_wall");
 if (list) {
